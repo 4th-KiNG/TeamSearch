@@ -8,7 +8,7 @@ function Header() {
             <div><img src={logo} alt="" className='logo'/></div>
             <div className='Info'>
                 <div><a href="/" className='infoTxt'>На главную</a></div>
-                <div><a href="/Menu" className='infoTxt'>О нас</a></div>
+                <div><a href="/About" className='infoTxt'>О нас</a></div>
             </div>
             <div><img src={settings} alt="" className='settings' /></div>
 

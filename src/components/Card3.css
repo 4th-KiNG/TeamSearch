@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "20011"; 
+    src: url("../fonts/20011.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+}
 
 .background3
 {
@@ -7,22 +13,25 @@
     right: 10%;
     box-shadow: 0px 0px 50px 2px;
     height: 40%;
-    background-color: darkgray;
+    background-color: white;
     border-radius: 40px 40px 40px 40px;
     width: 20%;
     margin: 0;
 }
 .title3{
     padding:16px 20px 20px 20px;
-    color:rgb(255, 255, 255);
-    font-size:30px;
+    color:black;
+    font-family: "20011";
+    font-size:28px;
     font-weight: 200;
 }
 .discription3{
     padding:10px 20px ;
     font-size:27px;
-    color:white;
+    color:black;
+    font-family: "20011";
     font-weight:150;
+    margin-top: 5%;
 }
 .lineincard3
 {

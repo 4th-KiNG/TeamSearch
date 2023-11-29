@@ -1,9 +1,17 @@
+@font-face {
+    font-family: "20011"; 
+    src: url("../fonts/20011.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+}
+
+
 .background1
 {
     transition: transform 0.2s ease;
     position: absolute;
     left: 10%;
-    background-color: darkgray;
+    background-color: white;
     height: 40%;
     width: 20%;
     border-radius: 40px;
@@ -11,15 +19,17 @@
     margin: 0;
 }
 .title1{
+    font-family: "20011";
     padding:20px;
-    color:white;
+    color:black;
     font-size:38px;
     font-weight: 300;
 }
 .discription1{
+    font-family: "20011";
     padding:10px 20px ;
     font-size:32px;
-    color:white;
+    color:black;
     font-weight:200;
     
 }

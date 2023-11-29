@@ -21,6 +21,14 @@
     padding-top: 3%;
 }
 
+.cross-img{
+    width: 6%;
+    position: absolute;
+    right: 3%;
+    top: 2%;
+    cursor: pointer;
+}
+
 .text-field{
     font-size: 28px;
     font-family: '20011';

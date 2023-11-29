@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "20011"; 
+    src: url("../fonts/20011.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+}
+
+.section {
+    width: 1250px;
+    height: 600px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+    box-shadow: 0 0 15px 2px;
+    padding-top: 3%;
+    padding-left: 3%;
+}
+
+.About{
+    background-image: url('../assets/background.jpg');
+    background-size: 100%;
+    padding: 3%;
+}
+.section1{
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.section2{
+    display: flex;
+}
+h1.about-txt{
+    font-size: 64px;
+    width: 100%;
+    margin-bottom: 3%;
+}
+.about-txt{
+    font-size: 48px;
+    width: 70%;
+    font-family: "20011";
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.strong1{
+    width: 25%;
+}
+
+.strong{
+    width: 20%;
+}

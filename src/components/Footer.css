@@ -1,28 +1,28 @@
+
+
 *{
     margin: 0;
     padding: 0;
 }
 
-.footerimg{
+.footer{
     width: 100%;
+    background-image: url('../assets/footer.jpg');
+    background-size: 110%;
     margin-bottom: -5px;
     box-shadow: -5px 5px 20px 5px;
 }
 
-.linkbar{
-    display: flex;
-    position: absolute;
-    margin-left: 33%;
-    margin-top: 2%;
-    
-}
 
 .linkimg{
-    width: 30%;
+    width: 6%;
+}
+
+.moodle{
+    margin-left: 31%;
 }
 .sfedu{
-    margin-left: -45%;
-}
-.github{
-    margin-left: -90%;
+    margin-left: 10%;
+    margin-right: 10%;
+    
 }

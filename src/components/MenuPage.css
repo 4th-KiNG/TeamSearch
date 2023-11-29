@@ -172,3 +172,25 @@
     }
 }
 
+.create-f{
+    position: absolute;
+    right: 7%;
+    top: 4%;
+}
+
+.create-f-btn{
+    font-size: 22px;
+    background-color: white;
+    width: 250px;
+    height: 50px;
+    font-family: '20011';
+    border-radius: 40px;
+}
+
+.reg-f{
+    display: block;
+}
+
+.reg-f.close{
+    display: none;
+}

@@ -10,8 +10,6 @@ function Footer() {
                 <a href=""><img className='linkimg sfedu' src={sfedu} alt="" /></a>
                 <a href="https://github.com/4th-KiNG/TeamSearch"><img className='linkimg github' src={github} alt="" /></a>
             </div>
-            <img src={footer} alt="" className='footerimg' />
-            
         </div>
     )
 }

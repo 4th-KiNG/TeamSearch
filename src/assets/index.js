@@ -7,6 +7,9 @@ import footer from './footer.jpg'
 import background from './background.jpg'
 import basketballico from './basketballico.png'
 import gameico from './gameico.png'
+import cross from './cross.png'
+import strong from './strong.png'
+import strong1 from './strong1.png'
 
 export {
     logo,
@@ -17,5 +20,8 @@ export {
     moodle,
     background,
     basketballico,
-    gameico
+    gameico,
+    cross,
+    strong,
+    strong1
 }

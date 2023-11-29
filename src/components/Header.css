@@ -27,9 +27,9 @@
 }
 .Info{
     display: flex;
-    gap: 0%;
+    gap: 15%;
     align-items: center;
-    margin-left: 60%;
+    margin-left: 50%;
 }
 .infoTxt{
     font-size: 30px;
