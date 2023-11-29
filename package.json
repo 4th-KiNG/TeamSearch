@@ -1,6 +1,7 @@
 {
   "name": "teamsearch",
   "version": "0.1.0",
+  "homepage": "https://4th-king.github.io/TeamSearch/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
