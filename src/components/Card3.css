@@ -46,3 +46,12 @@
 .background3:hover{
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 1280px){
+    .discription3{
+        font-size: 21px;
+    }
+    .title3{
+        font-size: 22px;
+    }
+}

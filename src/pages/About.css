@@ -51,3 +51,16 @@ h1.about-txt{
 .strong{
     width: 20%;
 }
+
+@media screen and (max-width: 1280px){
+    .section {
+        width: 1150px;
+    }
+    .about-txt{
+        font-size: 38px;
+        margin-top: 4%;
+    }
+    .strong1{
+        width: 28%;
+    }
+}

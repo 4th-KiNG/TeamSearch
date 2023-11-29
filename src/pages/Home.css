@@ -40,3 +40,9 @@ div.menu-btn{
   margin-top: auto;
   margin-bottom: auto;
 }
+
+@media screen and (max-width: 1280px){
+  .menu-btn{
+    font-size: 26px;
+  }
+}
