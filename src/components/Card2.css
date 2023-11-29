@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
     font-family: "20011"; 
     src: url("../fonts/20011.ttf") format("truetype"); 
@@ -31,11 +32,42 @@
     font-size:27px;
     font-weight:150;
     color:black;
+=======
+.crd2{
+    width: 350px;
+    border-radius: 4px;
+    
+}
+.background2
+{
+    margin:40px 40px;
+    
+    
+    background-color: darkgray;
+    height: 330px;
+    width: 300px;
+    border-radius: 40px 40px 40px 40px;
+}
+.title2{
+    padding:16px 20px 20px 20px;
+    color:rgb(255, 255, 255);
+    font-size:28px;
+    font-weight: 200;
+    line-height: 32px;
+}
+.discription2{
+    padding:10px 20px ;
+    font-size:22px;
+    color:white;
+    font-weight:150;
+    line-height: 28px;
+>>>>>>> 9d5c864b754522c9eabf318afdbd36dfe94920a0
 }
 .lineincard2
 {
     
     background-color: rgb(71, 71, 71);
+<<<<<<< HEAD
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -45,4 +77,10 @@
 
 .background2:hover{
     transform: scale(1.1);
+=======
+    width: 220px;
+    height: 3px;
+    border-radius: 40px 40px 40px 40px;
+    margin:-10px 40px -5px;
+>>>>>>> 9d5c864b754522c9eabf318afdbd36dfe94920a0
 }
