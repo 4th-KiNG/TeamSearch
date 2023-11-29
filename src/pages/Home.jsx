@@ -4,6 +4,7 @@ import Card1 from '../components/Card'
 import Card2 from '../components/Card2'
 import Card3 from '../components/Card3'
 import Text1 from '../components/Text'
+import { Link } from 'react-router-dom'
 
 
 
@@ -19,9 +20,7 @@ const Home = () => {
                 <Card3></Card3>
             </div>
             <div className='menu-btn'>
-                <a href="/Menu" className='menu-btn'>
-                    Перейти к анкетам
-                </a>
+                <Link to='/Menu' className='menu-btn'>Перейти к анкетам</Link>
             </div>
     </div>
     )
