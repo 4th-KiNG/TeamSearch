@@ -41,7 +41,7 @@ div.menu-btn{
   margin-bottom: auto;
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1320px){
   .menu-btn{
     font-size: 26px;
   }
