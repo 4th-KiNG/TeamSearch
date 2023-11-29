@@ -48,7 +48,7 @@
     transform: scale(1.1);
 }
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1300px){
     .discription1{
         font-size: 25px;
     }
