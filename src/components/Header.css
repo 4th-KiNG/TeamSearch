@@ -27,7 +27,7 @@
 }
 .Info{
     display: flex;
-    gap: 30%;
+    gap: 0%;
     align-items: center;
     margin-left: 60%;
 }

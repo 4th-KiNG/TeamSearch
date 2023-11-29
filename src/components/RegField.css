@@ -1,0 +1,124 @@
+@font-face {
+    font-family: "20011"; 
+    src: url("../fonts/20011.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+}
+
+.Field{
+    position: absolute;
+    width: 900px;
+    height: 940px;
+    background-color: white;
+    right: 18%;
+    bottom: 2%;
+    border-radius: 30px;
+    box-shadow: 0px 0px 25px 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding-top: 3%;
+}
+
+.text-field{
+    font-size: 28px;
+    font-family: '20011';
+    margin-left: 20%;
+}
+input[type='text'], input[type='number']{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 500px;
+    margin-top: 1%;
+}
+input[type="radio"]{
+    width: 50px;
+    height: 20px;
+    margin-bottom: 3%;
+}
+input[type='text']:focus, input[type='number']:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 5px rgba(158, 158, 158, 0.25);
+}
+textarea{
+    display: block;
+    height: 100px;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 500px;
+    resize: none;
+    margin-top: 1%;
+}
+textarea:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 5px rgba(158, 158, 158, 0.25);
+}
+select{
+    display: block;
+    height: 45px;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 525px;
+    resize: none;
+    margin-top: 1%;
+}
+select:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 5px rgba(158, 158, 158, 0.25);
+}
+.male{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.create-btn{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    height: 6%;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 15px;
+    font-family: '20011';
+}

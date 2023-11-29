@@ -1,0 +1,39 @@
+
+.background2
+{
+    transition: transform 0.2s ease;
+    position: absolute;
+    left: 40%;
+    background-color: darkgray;
+    box-shadow: 0px 0px 20px 2px;
+    height: 40%;
+    width: 20%;
+    margin: 0;
+    border-radius: 40px 40px 40px 40px;
+}
+.title2{
+    padding:16px 20px 20px 20px;
+    color:rgb(255, 255, 255);
+    font-size:30px;
+    font-weight: 200;
+}
+.discription2{
+    padding:10px 20px ;
+    font-size:27px;
+    font-weight:150;
+    color:white;
+}
+.lineincard2
+{
+    
+    background-color: rgb(71, 71, 71);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 3px;
+    border-radius: 40px 40px 40px 40px;
+}
+
+.background2:hover{
+    transform: scale(1.1);
+}
