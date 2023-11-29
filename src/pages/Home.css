@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @font-face {
   font-family: "20011"; 
   src: url("../fonts/20011.ttf") format("truetype"); 
@@ -41,22 +40,3 @@ a.menu-btn{
   margin-top: auto;
   margin-bottom: auto;
 }
-=======
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-  }
-  .CardBox{
-    margin-top: -20px;
-    display: flex;
-    justify-content: space-around;
-  }
-  .Home
-  {
-    background-image: url('../assets/background.jpg');
-  
-    background-size: 100%;
-  }
->>>>>>> 9d5c864b754522c9eabf318afdbd36dfe94920a0
