@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/TeamSearch/static/css/main.c3dbb4b0.css",
-    "main.js": "/TeamSearch/static/js/main.b6641567.js",
+    "main.css": "/TeamSearch/static/css/main.7f42ee23.css",
+    "main.js": "/TeamSearch/static/js/main.cf26e35d.js",
     "static/js/787.d096c4c1.chunk.js": "/TeamSearch/static/js/787.d096c4c1.chunk.js",
-    "static/media/background.jpg": "/TeamSearch/static/media/background.c664b9d7031bd8a3f340.jpg",
+    "static/media/background.png": "/TeamSearch/static/media/background.1f6ca1a9d93323472b55.png",
     "static/media/sfedu.png": "/TeamSearch/static/media/sfedu.acb0221c32451c8abc42.png",
-    "static/media/logo.png": "/TeamSearch/static/media/logo.28b62b4e02aeab8d0ef7.png",
     "static/media/footer.jpg": "/TeamSearch/static/media/footer.eace65077c45eb157de2.jpg",
     "static/media/strong1.png": "/TeamSearch/static/media/strong1.29c38cbc2d819844ee93.png",
     "static/media/strong.png": "/TeamSearch/static/media/strong.c53b42bd4ae489a4e16b.png",
     "static/media/github.png": "/TeamSearch/static/media/github.9ca5fd68d342d8696425.png",
     "static/media/moodle.png": "/TeamSearch/static/media/moodle.dcda4404eddd609f7d93.png",
+    "static/media/logo.svg": "/TeamSearch/static/media/logo.2a82a4d790cd29baafdf143a69ff4425.svg",
     "static/media/20011.ttf": "/TeamSearch/static/media/20011.cb7f52446510b0f413c9.ttf",
     "index.html": "/TeamSearch/index.html",
-    "main.c3dbb4b0.css.map": "/TeamSearch/static/css/main.c3dbb4b0.css.map",
-    "main.b6641567.js.map": "/TeamSearch/static/js/main.b6641567.js.map",
+    "main.7f42ee23.css.map": "/TeamSearch/static/css/main.7f42ee23.css.map",
+    "main.cf26e35d.js.map": "/TeamSearch/static/js/main.cf26e35d.js.map",
     "787.d096c4c1.chunk.js.map": "/TeamSearch/static/js/787.d096c4c1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3dbb4b0.css",
-    "static/js/main.b6641567.js"
+    "static/css/main.7f42ee23.css",
+    "static/js/main.cf26e35d.js"
   ]
 }
