@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: "20011"; 
     src: url("../fonts/20011.ttf") format("truetype"); 
@@ -12,7 +10,7 @@
     z-index: 0;
     display: grid;
     grid-template-columns: 370px 5fr;
-    min-height: 1080px;
+    min-height: 1000px;
 }
 
 .filters{

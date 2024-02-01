@@ -13,30 +13,39 @@
 .header{
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    background-color: white;
-    height: 120px;
+    background-color: #3E3E3E;
+    height: 100px;
     box-shadow: 0 4px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container{
+    max-width: 1440px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    vertical-align: middle;
 }
 .logo{
-    width: 35%;
-    margin-left: 8%;
+    width: 300px;
+    margin-left: 50px;
 }
 .Info{
     display: flex;
-    gap: 15%;
+    margin-left: auto;
+    gap: 40px;
     align-items: center;
-    margin-left: 50%;
+    margin-right: 50px;
 }
 .infoTxt{
-    font-size: 30px;
+    font-size: 24px;
     font-family: '20011';
     width: max-content;
     text-decoration: none;
-    color: black;
+    color: white;
     white-space: nowrap;
     
 }
@@ -45,55 +54,3 @@
     width: 12%;
     margin-left: 45%;
 }
-
-@media all and (max-width: 1920px) {
-    .logo{
-        width: 45%;
-    }
-    .infoTxt{
-        font-size: 26px;
-    }
-    .settings{
-        width: 15%;
-    }
-}
-
-@media all and (max-width: 1440px) {
-    .logo{
-        width: 80%;
-    }
-    .infoTxt{
-        font-size: 23px;
-    }
-    .settings{
-        width: 20%;
-        margin-top: 12%;
-    }
-}
-
-@media all and (max-width: 1024px) {
-    .logo{
-        width: 70%;
-    }
-    .infoTxt{
-        font-size: 16px;
-    }
-    .settings{
-        width: 20%;
-        margin-top: 12%;
-    }
-}
-
-@media all and (max-width: 768px) {
-    .logo{
-        width: 80%;
-    }
-    .infoTxt{
-        font-size: 12px;
-    }
-    .settings{
-        width: 20%;
-        margin-top: 15%;
-    }
-}
-

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Text.css'
 
-  function Text1() {
+  function Text() {
     return(
         <div className="txt">
             <div className="Welcome">Welcome to TeamSearch</div>
@@ -11,4 +11,4 @@ import './Text.css'
         </div>
     )
 }
-  export default Text1
+  export default Text

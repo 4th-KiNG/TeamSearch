@@ -1,7 +1,7 @@
 import './RegField.css'
 import { cross } from '../assets';
 
-import MenuPage from './MenuPage';
+import MenuPage from '../pages/MenuPage';
 import React from 'react';
 
 function Close(){

@@ -1,7 +1,7 @@
-import Card1 from "./Card"
+import Card from "./Card"
 
 
 
 export {
-    Card1,
+    Card,
 }
