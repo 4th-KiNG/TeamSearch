@@ -1,7 +1,5 @@
 import './RegField.css'
 import { cross } from '../assets';
-
-import MenuPage from '../pages/MenuPage';
 import React from 'react';
 
 function Close(){
@@ -9,7 +7,7 @@ function Close(){
 }
 
 
-class RegField extends React.Component { 
+class RegField extends React.Component {
     render(){
     return(
         <div className='Field'>
@@ -32,13 +30,14 @@ class RegField extends React.Component {
             <div className='text-field'>
                 <p>Спорт</p>
                 <select id="sport" name='sport'>
-                    <option value="">Мини-Футбол⚽</option>
-                    <option value="">Баскетбол🏀</option>
-                    <option value="">Настольный теннис🏓</option>
-                    <option value="">Волейбол🏐</option>
-                    <option value="">CS:GO🎮</option>
-                    <option value="">Dota 2</option>
-                    <option value="">Apex Legents</option>
+                    <option value="Мини-Футбол">Мини-Футбол⚽</option>
+                    <option value="Баскетбол">Баскетбол🏀</option>
+                    <option value="Настольный теннис">Настольный теннис🏓</option>
+                    <option value="Волейбол">Волейбол🏐</option>
+                    <option value="CS:GO">CS:GO🎮</option>
+                    <option value="Dota 2">Dota 2🕹️</option>
+                    <option value="The Finals">The Finals🗡️</option>
+                    <option value="Rust">Rust🪓</option>
                 </select>
             </div>
             <div className='text-field'>

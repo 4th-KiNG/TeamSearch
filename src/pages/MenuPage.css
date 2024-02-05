@@ -14,11 +14,25 @@
 }
 
 .filters{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
     padding-top: 10%;
     background-color: white;
+}
+
+.sportlist{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cybersport{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.open{
+    display: flex;
 }
 
 .filter{
@@ -37,7 +51,7 @@
 }
 
 .applic{
-    margin-top: 3%;
+    margin-top: 30px;
 }
 
 .grey-rect{
@@ -172,8 +186,12 @@
 
 .create-f{
     position: absolute;
-    right: 7%;
-    top: 4%;
+    right: 40px;
+    top: 30px;
+}
+
+.no-scroll{
+    overflow: hidden;
 }
 
 .create-f-btn{
@@ -189,6 +207,17 @@
     display: block;
 }
 
+
 .reg-f.close{
     display: none;
+}
+
+@media (max-width: 1300px){
+    .grey-rect{
+        margin-left: 40px;
+        margin-right: auto;
+    }
+    .filters{
+        display: none;
+    }
 }

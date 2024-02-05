@@ -7,18 +7,21 @@
 
 .Field{
     position: absolute;
-    width: 900px;
-    height: 940px;
+    height: 600px;
+    scrollbar-width: none;
+    margin-left: auto;
+    width: 526px;
+    padding: 40px;
+    right: 10px;
+    overflow: auto;
+    top: 110px;
+    z-index: 200;
     background-color: white;
-    right: 18%;
-    bottom: 2%;
     border-radius: 30px;
     box-shadow: 0px 0px 25px 0px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap:20px;
-    padding-top: 3%;
 }
 
 .cross-img{
@@ -32,7 +35,7 @@
 .text-field{
     font-size: 28px;
     font-family: '20011';
-    margin-left: 20%;
+    display: inline-block;
 }
 input[type='text'], input[type='number']{
     display: block;
@@ -66,7 +69,7 @@ input[type='text']:focus, input[type='number']:focus{
 }
 textarea{
     display: block;
-    height: 100px;
+    height: 40px;
     padding: 0.375rem 0.75rem;
     font-family: inherit;
     font-size: 22px;
@@ -120,11 +123,10 @@ select:focus{
 }
 
 .create-btn{
-    width: 25%;
     margin-left: auto;
     margin-right: auto;
+    padding: 5px 10px;
     margin-top: 3%;
-    height: 6%;
     font-size: 20px;
     background-color: white;
     border-radius: 15px;

@@ -1,9 +1,10 @@
 import logo from './logo.svg'
+import logo_mobile from './logo_mobile.png'
 import settings from './settings.png'
 import sfedu from './sfedu.png'
 import github from './github.png'
 import moodle from './moodle.png'
-import footer from './footer.jpg'
+import footer from './footer.png'
 import background from './background.png'
 import basketballico from './basketballico.png'
 import gameico from './gameico.png'
@@ -12,6 +13,7 @@ import strong from './strong.png'
 import strong1 from './strong1.png'
 
 export {
+    logo_mobile,
     logo,
     settings,
     footer,
