@@ -124,6 +124,32 @@
     animation-fill-mode: forwards;
 }
 
+.forms{
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu_filter{
+    display: none;
+    height: 45px;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 200px;
+    resize: none;
+}
+
+.create-f-mobile{
+    display: none;
+}
 
 @keyframes rotation{
     0%{
@@ -204,7 +230,13 @@
 }
 
 .reg-f{
-    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
 }
 
 
@@ -213,11 +245,43 @@
 }
 
 @media (max-width: 1300px){
+    .mainPage{
+        display: block;
+    }
+    .create-f{
+        top: 0px;
+    }
     .grey-rect{
-        margin-left: 40px;
-        margin-right: auto;
+        display: none;
     }
     .filters{
         display: none;
+    }
+    .menu_filter{
+        display: block;
+    }
+    .forms{
+        margin-left: 0;
+    }
+    .create-f{
+        position: static;
+    }
+    .filter_for_mobile{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 525px){
+    .create-f{
+        display: none;
+    }
+    .create-f-mobile{
+        display: block;
+    }
+    .create-f-btn{
+        width: 50px;
     }
 }

@@ -4,6 +4,7 @@ import RegField from '../components/RegField'
 import Forms from '../components/Forms.jsx';
 import React, {Component, useState} from 'react';
 import { ReactDOM } from 'react';
+import Menu from '../components/Menu';
 let flag = true;
 function anim(){
     if (flag){
@@ -27,14 +28,60 @@ function Open() {
 }
 
 function CyberFilter() {
-  document.querySelector('.sport').classList.toggle('open');
+  document.querySelector('.sportlist').classList.toggle('open');
   document.querySelector('.cybersport').classList.toggle('open');
 }
 
 
 
 const MenuPage = () => {
+    
     const [forms, setForms] = useState([
+      {
+        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Баскетбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
+        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Баскетбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
+        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Баскетбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
+        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Баскетбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
+        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Баскетбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
       {
         id: 1,
         name: "Писанко Александр Валерьевич",
@@ -85,8 +132,18 @@ const MenuPage = () => {
                 </div>
               </div>
             </div>
-            <div className='create-f'><button className='create-f-btn' onClick={Open}>Создать анкету+</button></div>
-            
+            <div className='filter_for_mobile'>
+              <select name="filters" className='menu_filter' id="">
+                <option value="">Мини-Футбол</option>
+                <option value="">Мини-Футбол</option>
+                <option value="">Мини-Футбол</option>
+                <option value="">Мини-Футбол</option>
+                <option value="">Мини-Футбол</option>
+                <option value="">Мини-Футбол</option>
+              </select>
+              <div className='create-f'><button className='create-f-btn' onClick={Open}>Создать анкету+</button></div>
+              <div className='create-f-mobile'><button className='create-f-btn' onClick={Open}>+</button></div>
+            </div>
             <div className='forms'>
               <Forms forms={forms} />
             </div>

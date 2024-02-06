@@ -1,6 +1,15 @@
 .items{
-    margin-top: 5%;
+    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 2%;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
 }
+
+@media (max-width: 1300px){
+    .items{
+        justify-content: center;
+    }
+}
+

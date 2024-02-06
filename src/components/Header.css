@@ -61,6 +61,10 @@
     margin-bottom: 5px;
 }
 
+.no-scroll{
+    overflow: hidden;
+}
+
 .nav-toggle .bar-bot {
     margin-bottom: 0;
 }
@@ -112,5 +116,29 @@
     }
     .header{
         height: 80px;
+    }
+}
+@media (max-width: 425px){
+    .header{
+        height: 70px;
+    }
+    .logo_mobile{
+        width: 60px;
+    }
+    .nav-toggle{
+        width: 40px;
+        height: 40px;
+        padding-left: 9px;
+        padding-top: 3px;
+    }
+    .nav-toggle [class*='bar-'] {
+        width: 20px;
+        margin-bottom: 3px;
+    }
+    .opened .bar-top {
+        width: 29px;
+    }
+    .opened .bar-bot {
+        width: 29px;
     }
 }

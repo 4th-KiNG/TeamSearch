@@ -22,22 +22,26 @@ class RegField extends React.Component {
             </div>
             <div className='text-field'>
                 <p className='male'>Пол</p>
-                <label htmlFor="male">Мужской</label>
-                <input type="radio" name="contact" id="male" value="Мужской" className='name-input'/>
-                <label htmlFor="female">Женский</label>
-                <input type="radio" name="contact" id="male" value="Женский" className='name-input'/>
+                <div>
+                    <label htmlFor="male">Мужской</label>
+                    <input type="radio" name="contact" id="male" value="Мужской" className='name-input'/>
+                </div>
+                <div>
+                    <label htmlFor="female">Женский</label>
+                    <input type="radio" name="contact" id="male" value="Женский" className='name-input'/>
+                </div>
             </div>
             <div className='text-field'>
                 <p>Спорт</p>
-                <select id="sport" name='sport'>
-                    <option value="Мини-Футбол">Мини-Футбол⚽</option>
-                    <option value="Баскетбол">Баскетбол🏀</option>
-                    <option value="Настольный теннис">Настольный теннис🏓</option>
-                    <option value="Волейбол">Волейбол🏐</option>
-                    <option value="CS:GO">CS:GO🎮</option>
-                    <option value="Dota 2">Dota 2🕹️</option>
-                    <option value="The Finals">The Finals🗡️</option>
-                    <option value="Rust">Rust🪓</option>
+                <select id="sport" className='reg_filter' name='sport'>
+                    <option value="Мини-Футбол⚽">Мини-Футбол⚽</option>
+                    <option value="Баскетбол🏀">Баскетбол🏀</option>
+                    <option value="Настольный теннис🏓">Настольный теннис🏓</option>
+                    <option value="Волейбол🏐">Волейбол🏐</option>
+                    <option value="CS:GO🎮">CS:GO🎮</option>
+                    <option value="Dota 2🕹️">Dota 2🕹️</option>
+                    <option value="The Finals🗡️">The Finals🗡️</option>
+                    <option value="Rust🪓">Rust🪓</option>
                 </select>
             </div>
             <div className='text-field'>

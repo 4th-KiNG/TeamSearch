@@ -1,14 +1,20 @@
 import {logo, logo_mobile, settings} from '../assets'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import './Header.css'
+import Menu from '../components/Menu';
 
-function open_menu(){
-    document.querySelector('.nav-toggle').classList.toggle('opened')
-    console.log(123)
-}
+
 
 function Header() {
+    const [isMenuOpen, setMenuOpen] = useState(false);
+    function open_menu(){
+        document.querySelector('.nav-toggle').classList.toggle('opened')
+        setMenuOpen(!isMenuOpen);
+        document.querySelector('body').classList.toggle('no-scroll');
+    }
     return(
+        <div>
         <div className='header'>
             <div className='container'>
                 <img src={logo} alt="" className='logo'/>
@@ -26,6 +32,8 @@ function Header() {
                     <span class="bar-bot"></span>
                 </button>
             </div>
+            </div>
+        {isMenuOpen && <Menu/>}
         </div>
     )
 }

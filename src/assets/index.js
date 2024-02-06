@@ -9,8 +9,8 @@ import background from './background.png'
 import basketballico from './basketballico.png'
 import gameico from './gameico.png'
 import cross from './cross.png'
-import strong from './strong.png'
-import strong1 from './strong1.png'
+import strong from './strong.svg'
+import strong1 from './strong1.svg'
 
 export {
     logo_mobile,

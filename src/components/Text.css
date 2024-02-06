@@ -12,7 +12,6 @@
     color:rgb(0, 0, 0);
     font-size:60px;
     font-weight: 350;
-    line-height: 80px;
 }
 .Servis
 {
@@ -30,4 +29,39 @@
     color:rgb(0, 0, 0);
     font-size:30px;
     font-weight:250px;
+}
+
+@media (max-width: 1000px){
+    .txt{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    .Welcome{
+        font-size: 48px;
+    }
+    .Servis{
+        font-size: 24px;
+    }
+    .Why{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 425px){
+    .txt{
+        gap: 10px;
+    }
+    .Welcome{
+        font-size: 36px;
+    }
+    .Servis{
+        font-size: 18px;
+    }
+    .Why{
+        font-size: 18px;
+    }
+    .Line1{
+        height: 2px;
+    }
 }

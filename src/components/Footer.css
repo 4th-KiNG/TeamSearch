@@ -22,7 +22,21 @@
     width: 100px;
 }
 
-.moodle{
+@media (max-width: 940px){
+    .footer{
+        height: 80px;
+    }
+    .linkimg{
+        width: 70px;
+    }
+    a{
+        display: flex;
+        align-items: center;
+    }
 }
-.sfedu{
+
+@media (max-width: 940px){
+    .footer{
+        height: 70px;
+    }
 }

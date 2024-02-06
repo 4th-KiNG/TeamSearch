@@ -7,33 +7,78 @@
 
 .item{
     width: 300px;
-    height: 200px;
+    height: 300px;
     background-color: white;
     border-radius: 15px;
     padding: 20px;
-    margin: 15px;
 }
 
 .item:hover{
     box-shadow: 0px 0px 5px 0px;
 }
 
-.name{
-    text-align: center;
-    font-size: 25px;
-    font-family: "20011";
-}
+
 
 .tglink{
     text-decoration: none;
     color: black;
     font-size: 20px;
     font-family: "20011";
-    
+    margin: 3px;
 }
 
 p{
     font-size: 20px;
     font-family: "20011";
-    margin-top: 5px;
+    margin: 5px;
+}
+
+.dir{
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 130px;
+    word-wrap: break-word;
+}
+
+.name{
+    text-align: center;
+    font-size: 25px;
+    font-family: "20011";
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+@media (max-width: 760px){
+    .item{
+        width: 230px;
+    }
+    p{
+        font-size: 16px;
+    }
+    .tglink{
+        font-size: 16px;
+    }
+    .name{
+        font-size: 20px;
+    }
+}
+@media (max-width: 525px){
+    .item{
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+    p{
+        font-size: 18px;
+    }
+    .tglink{
+        font-size: 18px;
+    }
+    .name{
+        font-size: 22px;
+    }
 }

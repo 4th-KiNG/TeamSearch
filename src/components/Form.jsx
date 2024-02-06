@@ -10,7 +10,8 @@ export class Form extends Component {
                 <p className="sport">Вид спорта: {this.props.item.sport}</p>
                 <p className="sex">Пол: {this.props.item.male}</p>
                 <a href={this.props.item.tglink} className="tglink">Ссылка на Telegram</a>
-                <p className="dir">Описание: {this.props.item.description}</p>
+                <p>Описание:</p>
+                <p className="dir">{this.props.item.description}</p>
             </div>
         )
     }
