@@ -40,11 +40,13 @@
     padding: 4%;
     margin: 2%;
     font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .filter:hover{
     cursor: pointer;
-    width: 300px;
     text-align: center;
     background-color: rgb(198, 198, 198);
     border-radius: 100px;
