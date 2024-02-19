@@ -14,3 +14,6 @@ React, Java Spring, CSS, SqlLite
 
 # Нулевая версия
 Пока что сайт не адаптивен и работает только на разрешении 1920×1080
+
+# Дизайн Figma
+https://www.figma.com/file/8EuyGfSJeu3lmER23CPo0k/Design?type=design&mode=design&t=LX5zRSH45DxIuqnb-1
