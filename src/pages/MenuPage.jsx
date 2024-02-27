@@ -92,7 +92,7 @@ const MenuPage = () => {
     const stateAdd = (name1, age1, male1, sport1, tglink1, description1) => {
         setForms(prevForms => [
           ...prevForms,
-          { id: prevForms.length + 1, 
+          {
             name: name1, 
             age: age1, 
             male: male1, 
@@ -123,6 +123,22 @@ const MenuPage = () => {
       })
     }
     function FilterOf(filt){
+      setFilter(prevfilter => {
+        let newfilter = ''
+        if (prevfilter === filt){
+          if (sportres){
+            newfilter = "Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон"
+          }
+          else{
+            newfilter = "Dota 2 The Finals CS:GO Rust"
+          }
+        }
+        else{
+          newfilter = filt
+        }
+        setshowforms(forms.filter((person) => newfilter.includes(person.sport)))
+        return newfilter
+      })
     }
     window.scrollTo(0, 0);
     return (
@@ -130,17 +146,17 @@ const MenuPage = () => {
         <div className="mainPage">
           <div className="filters">
             <div className='sportlist open'>
-              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Баскетбол</p>
-              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Волейбол</p>
-              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Мини-футбол</p>
-              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Настольный теннис</p>
-              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Бадминтон</p>
+              <p className='filter' onClick={() => FilterOf("Баскетбол")}>Баскетбол</p>
+              <p className='filter' onClick={() => FilterOf("Волейбол")}>Волейбол</p>
+              <p className='filter' onClick={() => FilterOf("Мини-футбол")}>Мини-футбол</p>
+              <p className='filter' onClick={() => FilterOf("Настольный теннис")}>Настольный теннис</p>
+              <p className='filter' onClick={() => FilterOf("Бадминтон")}>Бадминтон</p>
             </div>
             <div className='cybersport close'>
-              <p className='filter'>Dota 2</p>
-              <p className='filter'>CS:GO</p>
-              <p className='filter'>The Finals</p>
-              <p className='filter'>Rust</p>
+              <p className='filter' onClick={() => FilterOf("Dota 2")}>Dota 2</p>
+              <p className='filter' onClick={() => FilterOf("CS:GO")}>CS:GO</p>
+              <p className='filter' onClick={() => FilterOf("The Finals")}>The Finals</p>
+              <p className='filter' onClick={() => FilterOf("Rust")}>Rust</p>
             </div>
           </div>
           <div className="applic">
