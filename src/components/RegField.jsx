@@ -4,6 +4,7 @@ import React from 'react';
 
 function Close(){
     document.querySelector('.reg-f').classList.add('close');
+    document.querySelector('body').classList.remove('no-scroll');
 }
 
 
@@ -34,14 +35,14 @@ class RegField extends React.Component {
             <div className='text-field'>
                 <p>Спорт</p>
                 <select id="sport" className='reg_filter' name='sport'>
-                    <option value="Мини-Футбол⚽">Мини-Футбол⚽</option>
-                    <option value="Баскетбол🏀">Баскетбол🏀</option>
-                    <option value="Настольный теннис🏓">Настольный теннис🏓</option>
-                    <option value="Волейбол🏐">Волейбол🏐</option>
-                    <option value="CS:GO🎮">CS:GO🎮</option>
-                    <option value="Dota 2🕹️">Dota 2🕹️</option>
-                    <option value="The Finals🗡️">The Finals🗡️</option>
-                    <option value="Rust🪓">Rust🪓</option>
+                    <option value="Мини-Футбол">Мини-Футбол⚽</option>
+                    <option value="Баскетбол">Баскетбол🏀</option>
+                    <option value="Настольный теннис">Настольный теннис🏓</option>
+                    <option value="Волейбол">Волейбол🏐</option>
+                    <option value="CS:GO">CS:GO🎮</option>
+                    <option value="Dota 2">Dota 2🕹️</option>
+                    <option value="The Finals">The Finals🗡️</option>
+                    <option value="Rust">Rust🪓</option>
                 </select>
             </div>
             <div className='text-field'>

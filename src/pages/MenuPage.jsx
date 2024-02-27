@@ -2,9 +2,8 @@ import './MenuPage.css'
 import { basketballico, gameico } from '../assets';
 import RegField from '../components/RegField'
 import Forms from '../components/Forms.jsx';
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import { ReactDOM } from 'react';
-import Menu from '../components/Menu';
 let flag = true;
 function anim(){
     if (flag){
@@ -24,6 +23,7 @@ function anim(){
 }
 
 function Open() {
+  document.querySelector('body').classList.add('no-scroll');
     document.querySelector('.reg-f').classList.remove('close');
 }
 
@@ -35,10 +35,8 @@ function CyberFilter() {
 
 
 const MenuPage = () => {
-    
     const [forms, setForms] = useState([
       {
-        id: 1,
         name: "Писанко Александр Валерьевич",
         age: 18,
         male: "Мужской",
@@ -47,7 +45,22 @@ const MenuPage = () => {
         description: "Немного о себе"
       },
       {
-        id: 1,
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Мини-футбол",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
+        name: "Писанко Александр Валерьевич",
+        age: 18,
+        male: "Мужской",
+        sport: "Бадминтон",
+        tglink: "https://t.me/Ozoki46",
+        description: "Немного о себе"
+      },
+      {
         name: "Писанко Александр Валерьевич",
         age: 18,
         male: "Мужской",
@@ -56,66 +69,72 @@ const MenuPage = () => {
         description: "Немного о себе"
       },
       {
-        id: 1,
         name: "Писанко Александр Валерьевич",
         age: 18,
         male: "Мужской",
-        sport: "Баскетбол",
+        sport: "Dota 2",
         tglink: "https://t.me/Ozoki46",
         description: "Немного о себе"
       },
       {
-        id: 1,
         name: "Писанко Александр Валерьевич",
         age: 18,
         male: "Мужской",
-        sport: "Баскетбол",
-        tglink: "https://t.me/Ozoki46",
-        description: "Немного о себе"
-      },
-      {
-        id: 1,
-        name: "Писанко Александр Валерьевич",
-        age: 18,
-        male: "Мужской",
-        sport: "Баскетбол",
-        tglink: "https://t.me/Ozoki46",
-        description: "Немного о себе"
-      },
-      {
-        id: 1,
-        name: "Писанко Александр Валерьевич",
-        age: 18,
-        male: "Мужской",
-        sport: "Баскетбол",
+        sport: "The Finals",
         tglink: "https://t.me/Ozoki46",
         description: "Немного о себе"
       }
-    ]);
-  
+    ])
+    
+    const [filter, setFilter] = useState("Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон")
+    const [showsforms, setshowforms] = useState(forms.filter((person) => filter.includes(person.sport)));
+    const [sportres, setsportres] = useState(true)
     const stateAdd = (name1, age1, male1, sport1, tglink1, description1) => {
-      setForms(prevForms => [
-        ...prevForms,
-        { id: prevForms.length + 1, 
-          name: name1, 
-          age: age1, 
-          male: male1, 
-          sport: sport1, 
-          tglink: tglink1, 
-          description: description1 }
-      ]);
+        setForms(prevForms => [
+          ...prevForms,
+          { id: prevForms.length + 1, 
+            name: name1, 
+            age: age1, 
+            male: male1, 
+            sport: sport1, 
+            tglink: tglink1, 
+            description: description1 }
+        ]);
     };
+    function CyberFilter1(){
+      setsportres(prevres => {
+        const newres = !prevres;
+        if (newres){
+          setFilter(prevfilter => {
+            const newfilter = "Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон"
+            setshowforms(forms.filter((person) => newfilter.includes(person.sport)))
+            return newfilter
+          })
+        }
+        else{
+          setFilter(prevfilter => {
+            const newfilter = "Dota 2 The Finals CS:GO Rust"
+            setshowforms(forms.filter((person) => newfilter.includes(person.sport)))
+            return newfilter
+          })
+        }
+        
+        return newres;
+      })
+    }
+    function FilterOf(filt){
+    }
     window.scrollTo(0, 0);
     return (
       <div>
         <div className="mainPage">
           <div className="filters">
             <div className='sportlist open'>
-              <p className='filter'>Баскетбол</p>
-              <p className='filter'>Волейбол</p>
-              <p className='filter'>Мини-футбол</p>
-              <p className='filter'>Настольный теннис</p>
-              <p className='filter'>Бадминтон</p>
+              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Баскетбол</p>
+              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Волейбол</p>
+              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Мини-футбол</p>
+              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Настольный теннис</p>
+              <p className='filter' onClick={() => setshowforms(forms.filter((person) => 'Баскетбол'.includes(person.sport)))}>Бадминтон</p>
             </div>
             <div className='cybersport close'>
               <p className='filter'>Dota 2</p>
@@ -127,7 +146,7 @@ const MenuPage = () => {
           <div className="applic">
             <div className='grey-rect'>
               <div className='black-rect'>
-                <div className='white-rect' onClick={() => (document.querySelector('.white-rect').classList.toggle('white-rect1'), anim(), CyberFilter())}>
+                <div className='white-rect' onClick={() => (document.querySelector('.white-rect').classList.toggle('white-rect1'), anim(), CyberFilter(), CyberFilter1())}>
                   <img src={basketballico} alt="" className='basketballico' />
                   <img src={gameico} alt="" className='gameico' />
                 </div>
@@ -146,7 +165,7 @@ const MenuPage = () => {
               <div className='create-f-mobile'><button className='create-f-btn' onClick={Open}>+</button></div>
             </div>
             <div className='forms'>
-              <Forms forms={forms} />
+              <Forms forms={showsforms} />
             </div>
             <div className='reg-f close'>
               <RegField AddF={(name1, age1, male1, sport1, tglink1, description1) => stateAdd(name1, age1, male1, sport1, tglink1, description1)} />

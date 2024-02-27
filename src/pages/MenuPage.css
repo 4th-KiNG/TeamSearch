@@ -231,6 +231,7 @@
     height: 50px;
     font-family: '20011';
     border-radius: 40px;
+    border: 1px solid black;
 }
 
 .reg-f{

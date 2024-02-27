@@ -129,10 +129,14 @@ select:focus{
     border-radius: 15px;
     font-family: '20011';
 }
-
+@media (max-width: 600px){
+    .Field{
+        border-radius: 10px;
+    }
+}
 @media (max-width: 425px){
     .Field{
         padding: 20px;
-        border-radius: 10px;
+        
     }
 }

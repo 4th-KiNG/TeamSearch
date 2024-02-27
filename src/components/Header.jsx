@@ -2,8 +2,6 @@ import {logo, logo_mobile, settings} from '../assets'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Header.css'
-import Menu from '../components/Menu';
-
 
 
 function Header() {
@@ -33,7 +31,12 @@ function Header() {
                 </button>
             </div>
             </div>
-        {isMenuOpen && <Menu/>}
+        {isMenuOpen && 
+        <div className='menu'>
+            <Link to={'/'} onClick={open_menu} className='menu_title'>На главную</Link>
+            <Link to={'/About'} onClick={open_menu} className='menu_title'>О нас</Link>
+            <Link to={'/Menu'} onClick={open_menu} className='menu_title'>Анкеты</Link>
+        </div>}
         </div>
     )
 }

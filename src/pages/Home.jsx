@@ -4,7 +4,6 @@ import { Card } from '../components'
 import Text from '../components/Text'
 import { Link } from 'react-router-dom'
 import { Tilt } from 'react-tilt'
-
 const defaultOptions = {
 	reverse:        false,  // reverse the tilt direction
 	max:            35,     // max tilt rotation (degrees)
