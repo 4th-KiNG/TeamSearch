@@ -1,5 +1,5 @@
 import './MenuPage.css'
-import { basketballico, gameico } from '../assets';
+import { basketballico, cross, gameico } from '../assets';
 import RegField from '../components/RegField'
 import Forms from '../components/Forms.jsx';
 import React, {Component, useEffect, useState} from 'react';
@@ -48,7 +48,7 @@ const MenuPage = () => {
         name: "Писанко Александр Валерьевич",
         age: 18,
         male: "Мужской",
-        sport: "Мини-футбол",
+        sport: "Мини-Футбол",
         tglink: "https://t.me/Ozoki46",
         description: "Немного о себе"
       },
@@ -86,9 +86,10 @@ const MenuPage = () => {
       }
     ])
     
-    const [filter, setFilter] = useState("Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон")
+    const [filter, setFilter] = useState("Мини-Футбол Баскетбол Волейбол Настольный теннис Бадминтон")
     const [showsforms, setshowforms] = useState(forms.filter((person) => filter.includes(person.sport)));
     const [sportres, setsportres] = useState(true)
+    const [filteropen, setfilteropen] = useState(false)
     const stateAdd = (name1, age1, male1, sport1, tglink1, description1) => {
         setForms(prevForms => [
           ...prevForms,
@@ -100,13 +101,25 @@ const MenuPage = () => {
             tglink: tglink1, 
             description: description1 }
         ]);
+        if (filter.includes(sport1)){
+          setshowforms(prevforms => [
+            ...prevforms,
+            {
+              name: name1, 
+              age: age1, 
+              male: male1, 
+              sport: sport1, 
+              tglink: tglink1, 
+              description: description1 }
+          ])
+        }
     };
     function CyberFilter1(){
       setsportres(prevres => {
         const newres = !prevres;
         if (newres){
           setFilter(prevfilter => {
-            const newfilter = "Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон"
+            const newfilter = "Мини-Футбол Баскетбол Волейбол Настольный теннис Бадминтон"
             setshowforms(forms.filter((person) => newfilter.includes(person.sport)))
             return newfilter
           })
@@ -122,12 +135,16 @@ const MenuPage = () => {
         return newres;
       })
     }
-    function FilterOf(filt){
+    function OpenFilters(){
+      document.querySelector('body').classList.toggle('no-scroll');
+      document.querySelector(".filter-window").classList.toggle("filter-window-open")
+    }
+    function FilterOf(filt, mobile){
       setFilter(prevfilter => {
         let newfilter = ''
         if (prevfilter === filt){
           if (sportres){
-            newfilter = "Мини-футбол Баскетбол Волейбол Настольный теннис Бадминтон"
+            newfilter = "Мини-Футбол Баскетбол Волейбол Настольный теннис Бадминтон"
           }
           else{
             newfilter = "Dota 2 The Finals CS:GO Rust"
@@ -139,7 +156,11 @@ const MenuPage = () => {
         setshowforms(forms.filter((person) => newfilter.includes(person.sport)))
         return newfilter
       })
+      if (mobile){
+        OpenFilters()
+      }
     }
+    
     window.scrollTo(0, 0);
     return (
       <div>
@@ -148,7 +169,7 @@ const MenuPage = () => {
             <div className='sportlist open'>
               <p className='filter' onClick={() => FilterOf("Баскетбол")}>Баскетбол</p>
               <p className='filter' onClick={() => FilterOf("Волейбол")}>Волейбол</p>
-              <p className='filter' onClick={() => FilterOf("Мини-футбол")}>Мини-футбол</p>
+              <p className='filter' onClick={() => FilterOf("Мини-Футбол")}>Мини-футбол</p>
               <p className='filter' onClick={() => FilterOf("Настольный теннис")}>Настольный теннис</p>
               <p className='filter' onClick={() => FilterOf("Бадминтон")}>Бадминтон</p>
             </div>
@@ -169,16 +190,28 @@ const MenuPage = () => {
               </div>
             </div>
             <div className='filter_for_mobile'>
-              <select name="filters" className='menu_filter' id="">
-                <option value="">Мини-Футбол</option>
-                <option value="">Мини-Футбол</option>
-                <option value="">Мини-Футбол</option>
-                <option value="">Мини-Футбол</option>
-                <option value="">Мини-Футбол</option>
-                <option value="">Мини-Футбол</option>
-              </select>
+              <button className='create-filter' onClick={OpenFilters}>Фильтры</button>
               <div className='create-f'><button className='create-f-btn' onClick={Open}>Создать анкету+</button></div>
               <div className='create-f-mobile'><button className='create-f-btn' onClick={Open}>+</button></div>
+            </div>
+            <div className="filter-window">
+              <div className="filter-window-title">
+              <div className="filters-mobile">
+                <h1>Спорт</h1>
+                <p onClick={() => FilterOf("Баскетбол", true)}>Баскетбол</p>
+                <p onClick={() => FilterOf("Волейбол")}>Волейбол</p>
+                <p onClick={() => FilterOf("Мини-Футбол")}>Мини-Футбол</p>
+                <p onClick={() => FilterOf("Настольный теннис")}>Настольный теннис</p>
+                <p onClick={() => FilterOf("Бадминтон")}>Бадминтон</p>
+                <h1>Киберспорт</h1>
+                <p onClick={() => FilterOf("Dota 2")}>Dota 2</p>
+                <p onClick={() => FilterOf("CS:GO")}>CS:GO</p>
+                <p onClick={() => FilterOf("The Finals")}>The Finals</p>
+                <p onClick={() => FilterOf("Rust")}>Rust</p>
+              </div>
+                <img src={cross} onClick={OpenFilters} className='cross-img-filter' alt="" />
+              </div>
+              
             </div>
             <div className='forms'>
               <Forms forms={showsforms} />
