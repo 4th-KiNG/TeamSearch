@@ -1,7 +1,7 @@
 {
   "name": "teamsearch",
   "version": "0.1.0",
-  "homepage": "https://4th-king.github.io/TeamSearch/",
+  "homepage": "https://4th-king.github.io/TeamSearch/?#/",
   "private": true,
   "dependencies": {
     "@react-three/drei": "^9.97.6",

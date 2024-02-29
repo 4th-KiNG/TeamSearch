@@ -1,5 +1,5 @@
 import './MenuPage.css'
-import { basketballico, cross, gameico } from '../assets';
+import { basketballico, cross, gameico, playstick } from '../assets';
 import RegField from '../components/RegField'
 import Forms from '../components/Forms.jsx';
 import React, {Component, useEffect, useState} from 'react';
@@ -160,6 +160,9 @@ const MenuPage = () => {
         OpenFilters()
       }
     }
+    function CyberFilterMobile(){
+      document.querySelector(".mobile-cyber-filter").classList.toggle("checked");
+    }
     
     window.scrollTo(0, 0);
     return (
@@ -190,26 +193,37 @@ const MenuPage = () => {
               </div>
             </div>
             <div className='filter_for_mobile'>
-              <button className='create-filter' onClick={OpenFilters}>Фильтры</button>
+              <div className="mobile-filters">
+                <button className='create-filter' onClick={OpenFilters}>Фильтры</button>
+                <div className="mobile-cyber-filter-container">
+                  <img src={playstick} className="play-ico" alt="" />
+                  <div className="mobile-cyber-filter" onClick={() => (CyberFilterMobile(), CyberFilter1())}>
+                  </div>
+                </div>
+              </div>
+              
               <div className='create-f'><button className='create-f-btn' onClick={Open}>Создать анкету+</button></div>
               <div className='create-f-mobile'><button className='create-f-btn' onClick={Open}>+</button></div>
             </div>
             <div className="filter-window">
               <div className="filter-window-title">
-              <div className="filters-mobile">
-                <h1>Спорт</h1>
-                <p onClick={() => FilterOf("Баскетбол", true)}>Баскетбол</p>
-                <p onClick={() => FilterOf("Волейбол")}>Волейбол</p>
-                <p onClick={() => FilterOf("Мини-Футбол")}>Мини-Футбол</p>
-                <p onClick={() => FilterOf("Настольный теннис")}>Настольный теннис</p>
-                <p onClick={() => FilterOf("Бадминтон")}>Бадминтон</p>
-                <h1>Киберспорт</h1>
-                <p onClick={() => FilterOf("Dota 2")}>Dota 2</p>
-                <p onClick={() => FilterOf("CS:GO")}>CS:GO</p>
-                <p onClick={() => FilterOf("The Finals")}>The Finals</p>
-                <p onClick={() => FilterOf("Rust")}>Rust</p>
-              </div>
-                <img src={cross} onClick={OpenFilters} className='cross-img-filter' alt="" />
+                <div className="filters-mobile">
+                  <h1>Спорт</h1>
+                  <p onClick={() => FilterOf("Баскетбол", true)}>Баскетбол</p>
+                  <p onClick={() => FilterOf("Волейбол", true)}>Волейбол</p>
+                  <p onClick={() => FilterOf("Мини-Футбол", true)}>Мини-Футбол</p>
+                  <p onClick={() => FilterOf("Настольный теннис", true)}>Настольный теннис</p>
+                  <p onClick={() => FilterOf("Бадминтон", true)}>Бадминтон</p>
+                  <h1>Киберспорт</h1>
+                  <p onClick={() => FilterOf("Dota 2", true)}>Dota 2</p>
+                  <p onClick={() => FilterOf("CS:GO", true)}>CS:GO</p>
+                  <p onClick={() => FilterOf("The Finals", true)}>The Finals</p>
+                  <p onClick={() => FilterOf("Rust", true)}>Rust</p>
+                </div>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                  <img src={cross} onClick={OpenFilters} className='cross-img-filter' alt="" />
+                  <p style={{margin: "0"}} onClick={() => FilterOf(filter, true)}>Отчистить все фильты</p>
+                </div>
               </div>
               
             </div>

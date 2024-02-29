@@ -11,8 +11,10 @@ import gameico from './gameico.png'
 import cross from './cross.png'
 import strong from './strong.svg'
 import strong1 from './strong1.svg'
+import playstick from './playstick.png'
 
 export {
+    playstick,
     logo_mobile,
     logo,
     settings,
