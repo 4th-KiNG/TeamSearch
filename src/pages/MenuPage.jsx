@@ -1,6 +1,6 @@
 import './MenuPage.css'
 import { basketballico, cross, gameico, playstick } from '../assets';
-import RegField from '../components/RegField'
+import './RegField.css'
 import Forms from '../components/Forms.jsx';
 import React, {Component, useEffect, useState} from 'react';
 import { ReactDOM } from 'react';
@@ -28,8 +28,8 @@ function Open() {
 }
 
 function CyberFilter() {
-  document.querySelector('.sportlist').classList.toggle('open');
-  document.querySelector('.cybersport').classList.toggle('open');
+  document.querySelector('.sportlist').classList.toggle('close');
+  document.querySelector('.cybersport').classList.toggle('close');
 }
 
 
@@ -85,7 +85,6 @@ const MenuPage = () => {
         description: "Немного о себе"
       }
     ])
-    
     const [filter, setFilter] = useState("Мини-Футбол Баскетбол Волейбол Настольный теннис Бадминтон")
     const [showsforms, setshowforms] = useState(forms.filter((person) => filter.includes(person.sport)));
     const [sportres, setsportres] = useState(true)
@@ -163,24 +162,91 @@ const MenuPage = () => {
     function CyberFilterMobile(){
       document.querySelector(".mobile-cyber-filter").classList.toggle("checked");
     }
+
+    function FilterSelect(number){
+      let filters = document.querySelectorAll('.filter');
+      let flag = false;
+      if (filters[number].classList.length == 2){
+        flag = true
+      }
+      console.log(filters[number].classList)
+      for (let i = 0; i < filters.length; i ++){
+        filters[i].classList.remove("select")
+      }
+      if (!flag){
+        filters[number].classList.add("select")
+      }
+    }
+
+    function MobileFilterSelect(number){
+      let filters = document.querySelectorAll('.filter-mobile');
+      let flag = false;
+      if (filters[number].classList.length == 2){
+        flag = true
+      }
+      console.log(filters[number].classList)
+      for (let i = 0; i < filters.length; i ++){
+        filters[i].classList.remove("select-mobile")
+      }
+      if (!flag){
+        filters[number].classList.add("select-mobile")
+      }
+    }
+    function Close(){
+      document.querySelector('.reg-f').classList.add('close');
+      document.querySelector('body').classList.remove('no-scroll');
+      document.querySelector('.warning').classList.add('close')
+    }
+    function CheckPlaceHolders(){
+      if (
+          document.getElementById('name').value != null &&
+          document.getElementById('age').value != null &&
+          document.querySelector('input[name="contact"]:checked') != undefined &&
+          document.getElementById('sport').value != null &&
+          document.getElementById('tg').value != null &&
+          document.getElementById('des').value != null && 
+          document.getElementById('name').value != '' &&
+          document.getElementById('age').value != '' &&
+          document.getElementById('sport').value != '' &&
+          document.getElementById('tg').value != '' &&
+          document.getElementById('des').value != '' &&
+          document.getElementById('tg').value.slice(0, 13) == "https://t.me/"
+        ) {
+          const name = document.getElementById('name').value;
+          const age = document.getElementById('age').value;
+          const sex = document.querySelector('input[name="contact"]:checked').value;
+          const sport = document.getElementById('sport').value;
+          const tg = document.getElementById('tg').value;
+          const des = document.getElementById('des').value;
+          stateAdd(name, age, sex, sport, tg, des)
+          document.getElementById('name').value = null
+          document.getElementById('age').value = null
+          document.getElementById('tg').value = null
+          document.getElementById('des').value = null
+          Close();
+        }
+        else{
+          document.querySelector('.warning').classList.remove('close')
+        }
+    }
     
     window.scrollTo(0, 0);
     return (
       <div>
         <div className="mainPage">
           <div className="filters">
-            <div className='sportlist open'>
-              <p className='filter' onClick={() => FilterOf("Баскетбол")}>Баскетбол</p>
-              <p className='filter' onClick={() => FilterOf("Волейбол")}>Волейбол</p>
-              <p className='filter' onClick={() => FilterOf("Мини-Футбол")}>Мини-футбол</p>
-              <p className='filter' onClick={() => FilterOf("Настольный теннис")}>Настольный теннис</p>
-              <p className='filter' onClick={() => FilterOf("Бадминтон")}>Бадминтон</p>
+            <div className='sportlist'>
+              <p className='filter' onClick={() => (FilterOf("Баскетбол"), FilterSelect(0))}>Баскетбол</p>
+              <p className='filter' onClick={() => (FilterOf("Волейбол"), FilterSelect(1))}>Волейбол</p>
+              <p className='filter' onClick={() => (FilterOf("Мини-Футбол"), FilterSelect(2))}>Мини-футбол</p>
+              <p className='filter' onClick={() => (FilterOf("Настольный теннис"), FilterSelect(3))}>Настольный теннис</p>
+              <p className='filter' onClick={() => (FilterOf("Бадминтон"), FilterSelect(4))}>Бадминтон</p>
             </div>
             <div className='cybersport close'>
-              <p className='filter' onClick={() => FilterOf("Dota 2")}>Dota 2</p>
-              <p className='filter' onClick={() => FilterOf("CS:GO")}>CS:GO</p>
-              <p className='filter' onClick={() => FilterOf("The Finals")}>The Finals</p>
-              <p className='filter' onClick={() => FilterOf("Rust")}>Rust</p>
+              <p className='filter' onClick={() => (FilterOf("Dota 2"), FilterSelect(5))}>Dota 2</p>
+              <p className='filter' onClick={() => (FilterOf("CS:GO"), FilterSelect(6))}>CS:GO</p>
+              <p className='filter' onClick={() => (FilterOf("The Finals"), FilterSelect(7))}>The Finals</p>
+              <p className='filter' onClick={() => (FilterOf("Rust"), FilterSelect(8))}>Rust</p>
             </div>
           </div>
           <div className="applic">
@@ -209,16 +275,16 @@ const MenuPage = () => {
               <div className="filter-window-title">
                 <div className="filters-mobile">
                   <h1>Спорт</h1>
-                  <p onClick={() => FilterOf("Баскетбол", true)}>Баскетбол</p>
-                  <p onClick={() => FilterOf("Волейбол", true)}>Волейбол</p>
-                  <p onClick={() => FilterOf("Мини-Футбол", true)}>Мини-Футбол</p>
-                  <p onClick={() => FilterOf("Настольный теннис", true)}>Настольный теннис</p>
-                  <p onClick={() => FilterOf("Бадминтон", true)}>Бадминтон</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Баскетбол", true), MobileFilterSelect(0))}>Баскетбол</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Волейбол", true), MobileFilterSelect(1))}>Волейбол</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Мини-Футбол", true), MobileFilterSelect(2))}>Мини-Футбол</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Настольный теннис", true), MobileFilterSelect(3))}>Настольный теннис</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Бадминтон", true), MobileFilterSelect(4))}>Бадминтон</p>
                   <h1>Киберспорт</h1>
-                  <p onClick={() => FilterOf("Dota 2", true)}>Dota 2</p>
-                  <p onClick={() => FilterOf("CS:GO", true)}>CS:GO</p>
-                  <p onClick={() => FilterOf("The Finals", true)}>The Finals</p>
-                  <p onClick={() => FilterOf("Rust", true)}>Rust</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Dota 2", true), MobileFilterSelect(5))}>Dota 2</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("CS:GO", true), MobileFilterSelect(6))}>CS:GO</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("The Finals", true), MobileFilterSelect(7))}>The Finals</p>
+                  <p className="filter-mobile" onClick={() => (FilterOf("Rust", true), MobileFilterSelect(8))}>Rust</p>
                 </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                   <img src={cross} onClick={OpenFilters} className='cross-img-filter' alt="" />
@@ -231,7 +297,54 @@ const MenuPage = () => {
               <Forms forms={showsforms} />
             </div>
             <div className='reg-f close'>
-              <RegField AddF={(name1, age1, male1, sport1, tglink1, description1) => stateAdd(name1, age1, male1, sport1, tglink1, description1)} />
+              <div className='Field'>
+                <img src={cross} alt="" className='cross-img' onClick={Close}/>
+                <div className='text-field'>
+                    <p>ФИО</p>
+                    <input type="text" name="username" id="name" className='name-input'/>
+                </div>
+                <div className='text-field'>
+                    <p>Возраст</p>
+                    <input type="number" name="username" id="age" className='name-input'/>
+                </div>
+                <div className='text-field'>
+                    <p className='male'>Пол</p>
+                    <div>
+                        <label htmlFor="male">Мужской</label>
+                        <input type="radio" name="contact" id="male" value="Мужской" className='name-input'/>
+                    </div>
+                    <div>
+                        <label htmlFor="female">Женский</label>
+                        <input type="radio" name="contact" id="male" value="Женский" className='name-input'/>
+                    </div>
+                </div>
+                <div className='text-field'>
+                    <p>Спорт</p>
+                    <select id="sport" className='reg_filter' name='sport'>
+                        <option value="Мини-Футбол">Мини-Футбол⚽</option>
+                        <option value="Баскетбол">Баскетбол🏀</option>
+                        <option value="Настольный теннис">Настольный теннис🏓</option>
+                        <option value="Волейбол">Волейбол🏐</option>
+                        <option value="CS:GO">CS:GO🎮</option>
+                        <option value="Dota 2">Dota 2🕹️</option>
+                        <option value="The Finals">The Finals🗡️</option>
+                        <option value="Rust">Rust🪓</option>
+                    </select>
+                </div>
+                <div className='text-field'>
+                    <p>Ссылка на Telegram</p>
+                    <input type="text" name="username" id="tg" className='name-input'/>
+                </div>
+                <div className='text-field'>
+                    <p>Описание</p>
+                    <textarea name="username" type='text' id="des" cols="69" rows="10" className='name-input'></textarea>
+                </div>
+                <p className='warning close'>Заполните верно все поля!</p>
+                <button className='create-btn' onClick={CheckPlaceHolders}>
+                    Создать +
+                </button>
+                
+              </div>
             </div>
           </div>
         </div>

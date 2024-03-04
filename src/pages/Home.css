@@ -12,7 +12,12 @@
   width: 100%;
   margin-top: 20px;
 }
-
+.Desk{
+  display: flex;
+}
+.Mobile{
+  display: none;
+}
 
 .container1{
   display: flex;
@@ -65,5 +70,11 @@ div.menu-btn{
 @media(max-width: 700px){
   .CardBox{
     gap: 10px;
+  }
+  .Mobile{
+    display: flex;
+  }
+  .Desk{
+    display: none;
   }
 }
