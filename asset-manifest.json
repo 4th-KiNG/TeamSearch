@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/TeamSearch/static/css/main.5588f424.css",
-    "main.js": "/TeamSearch/static/js/main.98daf70d.js",
+    "main.css": "/TeamSearch/static/css/main.d490917b.css",
+    "main.js": "/TeamSearch/static/js/main.3f24489d.js",
     "static/js/787.d096c4c1.chunk.js": "/TeamSearch/static/js/787.d096c4c1.chunk.js",
     "static/media/background.png": "/TeamSearch/static/media/background.1f6ca1a9d93323472b55.png",
     "static/media/sfedu.png": "/TeamSearch/static/media/sfedu.acb0221c32451c8abc42.png",
+    "static/media/logosfedu.png": "/TeamSearch/static/media/logosfedu.ce22f21844c3a6ceb4b1.png",
     "static/media/github.png": "/TeamSearch/static/media/github.9ca5fd68d342d8696425.png",
     "static/media/moodle.png": "/TeamSearch/static/media/moodle.dcda4404eddd609f7d93.png",
     "static/media/strong1.svg": "/TeamSearch/static/media/strong1.60c7654e6a7c834e524c0f74275b4803.svg",
@@ -14,13 +15,15 @@
     "static/media/strong.svg": "/TeamSearch/static/media/strong.0be2a5c08befc0b4c016578c0bfc7c50.svg",
     "static/media/footer.png": "/TeamSearch/static/media/footer.c09298317507a8b78a28.png",
     "static/media/logo_mobile.png": "/TeamSearch/static/media/logo_mobile.2757fa6a2c2816c48535.png",
+    "static/media/custom.svg": "/TeamSearch/static/media/custom.d3d7fc6ce5be4970dc191427036914df.svg",
     "index.html": "/TeamSearch/index.html",
-    "main.5588f424.css.map": "/TeamSearch/static/css/main.5588f424.css.map",
-    "main.98daf70d.js.map": "/TeamSearch/static/js/main.98daf70d.js.map",
+    "static/media/user.svg": "/TeamSearch/static/media/user.7a288caeef88149691d4ca5fe8911b57.svg",
+    "main.d490917b.css.map": "/TeamSearch/static/css/main.d490917b.css.map",
+    "main.3f24489d.js.map": "/TeamSearch/static/js/main.3f24489d.js.map",
     "787.d096c4c1.chunk.js.map": "/TeamSearch/static/js/787.d096c4c1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5588f424.css",
-    "static/js/main.98daf70d.js"
+    "static/css/main.d490917b.css",
+    "static/js/main.3f24489d.js"
   ]
 }
