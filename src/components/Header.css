@@ -15,7 +15,6 @@
     z-index: 1;
     background-color: #3E3E3E;
     height: 100px;
-    box-shadow: 0 4px 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -128,6 +127,28 @@
     background-color: #3E3E3E;
 }
 
+.loginbtn{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    border-radius: 50px;
+    transition: all 200ms;
+}
+
+.loginbtn:hover{
+    background-color: black;
+    color: white;
+}
+.loginbtn:hover{
+    background-color: black;
+    color: white;
+}
+
 @media (max-width: 940px){
     .container{
         display: none;
@@ -139,7 +160,7 @@
         height: 80px;
     }
 }
-@media (max-width: 425px){
+@media (max-width: 940px){
     .header{
         height: 70px;
     }
@@ -162,4 +183,10 @@
     .opened .bar-bot {
         width: 29px;
     }
+}
+
+.userico{
+    width: 40px;
+    height: 40px;
+    
 }

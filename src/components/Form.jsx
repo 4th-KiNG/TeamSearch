@@ -1,20 +1,21 @@
 import React, {Component } from "react";
 import './Form.css'
+import { avatar } from "../assets";
 
-export class Form extends Component {
-    render() {
-        return(
-            <div className="item">
-                <p className="name">{this.props.item.name}</p>
-                <p className="age">Возраст: {this.props.item.age}</p>
-                <p className="sport">Вид спорта: {this.props.item.sport}</p>
-                <p className="sex">Пол: {this.props.item.male}</p>
-                <a href={this.props.item.tglink} className="tglink">Ссылка на Telegram</a>
-                <p>Описание:</p>
-                <p className="dir">{this.props.item.description}</p>
-            </div>
-        )
-    }
+const Form = ({id, name, age, sex, sport, description, link}) => {
+    return(
+    <div className="item">
+        <div className="ava">
+            <img src={avatar} style={{width: "20px"}} alt="" />
+        </div>
+        <div className="main-info">
+            <p style={{textAlign: "center", marginBottom: "15px"}} className="info-p">{name}</p>
+            <p className="info-p">Возраст: {age}</p>
+            <p className="info-p">Пол: {sex}</p>
+            <p className="info-p">Спорт: {sport}</p>
+        </div>
+    </div>
+    )
 }
 
 export default Form;

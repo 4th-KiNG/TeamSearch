@@ -1,0 +1,151 @@
+.Login{
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+.form{
+    max-width: 1440px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    height: 600px;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.logininput{
+    display: block;
+    min-width: 300px;
+    height: calc(2.25rem + 14px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.logininput:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 5px rgba(158, 158, 158, 0.25);
+}
+
+.forminput{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+
+.formtxt{
+    color: black;
+    text-align: center;
+}
+
+.mainbutton{
+    background-color: rgb(127, 212, 0);
+    border: 0px;
+    font-size: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.smallbutton{
+    background-color: white;
+    border: 0px;
+    color: blue;
+    text-decoration: underline;
+}
+.formimg{
+    display: block;
+    border-right: 1px black solid;
+    padding: 20px;
+}
+@media (max-width: 800px){
+    .formimg{
+        display: none;
+    }
+    .form{
+        justify-content: center;
+    }
+}
+@media (max-width: 425px){
+    .Login{
+        padding: 10px;
+    }
+    .form{
+        border-radius: 0px;
+    }
+    .forminput{
+        justify-content: flex-start;
+        margin-top: 40px;
+        gap: 50px;
+    }
+    .logininput{
+        min-width: 200px;
+    }
+    .formtxt{
+        font-size: 25px;
+    }
+}
+
+.alsoLog{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.logtitle{
+    text-align: center;
+    font-family: "20011";
+}
+
+.logOut{
+    position: absolute;
+    margin-top: 0;
+}
+
+.custom{
+    width: 30px;
+}
+
+.input-with-ico{
+    display: flex;
+    gap: 10px;
+}
+.input-ico{
+    width: 30px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.lk-card{
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    
+}

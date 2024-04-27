@@ -29,13 +29,13 @@ function About(){
                 <form className='fitback-form'>
                 <h2 className='about-txt'>Помогите улучшить нас сервис, оставив свой отзыв</h2>
                 <label htmlFor="name" className='labels'>ФИО</label>
-                <input type="text" className='name-input' />
+                <input type="text" placeholder='Иванов Иван Иванович' className='name-input' />
                 <label htmlFor="name" className='labels'>Электронная почта</label>
-                <input type="email" className='email-input' />
+                <input type="email" placeholder='example@mail.ru' className='email-input' />
                 <label htmlFor="name" className='labels'>Номер телефона</label>
-                <input type="tel" className='tel-input' />
+                <input type="tel" placeholder='+79999999999' className='tel-input' />
                 <label htmlFor="name" className='labels'>Отзыв</label>
-                <textarea name="" id="" cols="30" rows="10" className='fitback-input'></textarea>
+                <textarea name="" placeholder='Напишите ваше мнение о сервисе' id="" cols="30" rows="10" className='fitback-input'></textarea>
                 <div style={{display: "flex", alignItems: "center", marginTop: "20px", gap: "15px"}}><button className='send-btn' onClick={CheckPlace}>Отправить</button><p className='warning1 close'>Заполните все поля верно!</p><p className='send-label close'>Отправлено ✓</p></div>
                 
             </form>

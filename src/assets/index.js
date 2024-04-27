@@ -12,8 +12,16 @@ import cross from './cross.png'
 import strong from './strong.svg'
 import strong1 from './strong1.svg'
 import playstick from './playstick.png'
-
+import logosfedu from './logosfedu.png'
+import userico from './user.svg'
+import custom from './custom.svg'
+import emailico from './emailico.svg'
+import lockico from './lockico.svg'
+import eye from './eye.svg'
+import avatar from './avatar.svg'
 export {
+    avatar,
+    eye,
     playstick,
     logo_mobile,
     logo,
@@ -27,5 +35,10 @@ export {
     gameico,
     cross,
     strong,
-    strong1
+    strong1,
+    logosfedu,
+    userico,
+    custom,
+    lockico,
+    emailico
 }

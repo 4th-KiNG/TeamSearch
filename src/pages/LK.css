@@ -1,0 +1,168 @@
+.avatar-and-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.page{
+    height: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    margin: 0;
+  }
+.input-photo{
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+.button-lk{
+    border: 2px rgba(0, 0, 0, 0.3) solid;
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.avatar{
+    width: 300px;
+    height: 300px;
+    background-color: rgba(166, 166, 166, 0.6);
+    border-radius: 50%;
+    border: 2px rgba(0, 0, 0, 0.3) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lk-card{
+    text-decoration: none;
+    color: black;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(184, 184, 184);
+    font-size: 20px;
+}
+
+.contact-information{
+    display: flex;flex-direction: column;
+    gap: 20px;
+}
+
+.contact-information-txt{
+    font-size: 22px;
+}
+.contact-information-title{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.form1{
+    width: 100%;
+    height: 3000px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    
+}
+.no-scroll{
+    height: 100vh;
+}
+
+.form-container{
+    width: 800px;
+    height: 550px;
+    background-color: white;
+    position: absolute;
+    top: 200px;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.save-btn{
+    width: 200px;
+    padding: 20px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 6px;
+}
+.info-reduct{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.close-btn{
+    width: 30px;
+    margin-left: auto;
+    cursor: pointer;
+}
+@media (max-width: 1200px){
+    .page{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        justify-content: flex-start;
+        overflow: scroll;
+    }
+    .avatar-and-buttons{
+        flex-direction: row;
+        width: max-content;
+        height: max-content;
+    }
+    .avatar{
+        width: 100px;
+        height: 100px;
+    }
+    .input-photo{
+        width: 100px;
+        height: 100px;
+    }
+    .button-lk{
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+    }
+    .contact-information-title{
+        font-size: 24px;
+        margin-bottom: 14px;
+    }
+    .contact-information-txt{
+        font-size: 16px;
+    }
+    .lk-card{
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 350px){
+    .button-lk{
+        font-size: 14px;
+    }
+    .lk-card{
+        width: 250px;
+    }
+    .contact-information-title{
+        font-size: 22px;
+    }
+}

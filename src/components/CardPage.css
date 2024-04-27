@@ -1,0 +1,9 @@
+.CardPage{
+    height: calc(100vh - 200px);
+    background-color: white;
+}
+@media (max-width: 940px){
+    .CardPage{
+        height: calc(100vh - 140px);
+    }
+}

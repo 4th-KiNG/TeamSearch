@@ -1,7 +1,6 @@
 .fon{
   background-image: url('./assets/background.png');
 }
-
 body::-webkit-scrollbar{
   width: 0;
 }

@@ -6,7 +6,11 @@
     gap: 20px;
     margin-bottom: 20px;
 }
-
+.link{
+    text-decoration: none;
+    color: black;
+    
+}
 @media (max-width: 1300px){
     .items{
         justify-content: center;
@@ -14,3 +18,8 @@
     }
 }
 
+.form{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}

@@ -251,7 +251,7 @@
 .reg-f{
     height: 100%;
     width: 100%;
-    top: 0;
+    top: 10px;
     left: 0;
     display: flex;
     justify-content: center;
@@ -389,6 +389,9 @@
     }
     .create-filter{
         display: block;
+    }
+    .reg-f{
+        top: -10px;
     }
 }
 @media (max-width: 940px){

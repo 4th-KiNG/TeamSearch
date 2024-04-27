@@ -6,11 +6,14 @@
 }
 
 .item{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     background-color: white;
     border-radius: 15px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .item:hover{
@@ -26,8 +29,19 @@
     font-family: "20011";
     margin: 3px;
 }
-
-p{
+.ava{
+    width: 50px;
+    height: 50px;
+    background-color: rgba(166, 166, 166, 0.6);
+    border-radius: 50%;
+    border: 1px rgba(0, 0, 0, 0.3) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info-p{
     font-size: 20px;
     font-family: "20011";
     margin: 5px;
@@ -55,7 +69,7 @@ p{
     .item{
         width: 230px;
     }
-    p{
+    .info-p{
         font-size: 16px;
     }
     .tglink{
@@ -76,7 +90,7 @@ p{
         margin-right: 10px;
         padding: 10px;
     }
-    p{
+    .info-p{
         font-size: 18px;
     }
     .tglink{
