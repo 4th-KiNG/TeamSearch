@@ -38,7 +38,7 @@ function Header() {
         <div>
         <div className='header'>
             <div className='container'>
-                <img src={logo} alt="" className='logo'/>
+                <Link to='/'><img src={logo} alt="" className='logo'/></Link>
                 <div className='Info'>
                     
                     <div><Link to='/' className='infoTxt'>На главную</Link></div>
@@ -53,7 +53,7 @@ function Header() {
                 </div>
             </div>
             <div className='container_for_mobile'>
-                <img src={logo_mobile} alt="" className='logo_mobile'/>
+                <Link to='/'><img src={logo_mobile} alt="" className='logo_mobile'/></Link>
                 <div style={{display: "flex", flexDirection: "row", gap: "10px", alignItems: "center"}}>
                     {user === null &&
                         <div><Link to='/Login' onClick={close_menu} className='loginbtn'>Войти</Link></div>
