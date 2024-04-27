@@ -5,15 +5,15 @@
 # Задачи проекта
 - [x] Генерация идеи проекта
 - [x] Создание макета в Figma
-- [ ] Написание Fronted
+- [x] Написание Fronted
 - [ ] Написание Backend
 - [ ] Совмещение Front + Back
 - [ ] Итоговое представление проекта
 # Стек технологий
-React, Java Spring, CSS, SqlLite
+React, Node.js, CSS, MySQL
 
-# Нулевая версия
-Пока что сайт не адаптивен и работает только на разрешении 1920×1080
+# Работа сайта
+Во избежание некорректной работы фильтров на странице сайта должен быть отключён автоперевод 
 
 # Дизайн Figma
 https://www.figma.com/file/8EuyGfSJeu3lmER23CPo0k/Design?type=design&mode=design&t=LX5zRSH45DxIuqnb-1
