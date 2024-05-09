@@ -150,17 +150,18 @@ const Login = ({cards}) => {
                 <div className='form-container'>
                     <img src={cross} onClick={BodyFix} className='close-btn' alt="" />
                     <div className='info-reduct'>
-                        <p>ФИО: <input type="text" value={name} className='lk-name' /></p>
-                        <p>Возраст: <input type="number" value={age} className='lk-age' /></p>
-                        <p>Пол: <input type="text" value={sex} className='lk-sex' /></p>
-                        <p>Профильный спорт: <input type="text" value={sport} className='lk-sport' name="" id="" /></p>
-                        <p>Город: <input type="text" className='lk-city' value={city} name="" id="" /></p>
+                        <p>ФИО: <input type="text" placeholder={name} className='lk-name' /></p>
+                        <p>Возраст: <input type="number" placeholder={age} className='lk-age' /></p>
+                        <p>Пол: <input type="text" placeholder={sex} className='lk-sex' /></p>
+                        <p>Профильный спорт: <input type="text" placeholder={sport} className='lk-sport' name="" id="" /></p>
+                        <p>Город: <input type="text" className='lk-city' placeholder={city} name="" id="" /></p>
                     </div>
                     <button className='save-btn' onClick={SaveInfo}>Сохранить</button>
                 </div>
             </div>
         )
     }
+    
     return (
         <div className='Login'>
             {state === "reg" && 
@@ -223,6 +224,7 @@ const Login = ({cards}) => {
                         <p className='contact-information-txt'>Город: {city}</p>
                     </div>
                     <div className='cards'>
+                        
                         {cards.map((card) => (card.email === email ? <>
                         <Link className='lk-card' to={`/user/${card.id}`}>
                             <p>Вид спорта: {card.sport}</p>

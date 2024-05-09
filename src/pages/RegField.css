@@ -129,6 +129,14 @@ select:focus{
     border-radius: 15px;
     font-family: '20011';
 }
+@media (max-width: 700px){
+    input[type='text'], input[type='number']{
+        font-size: 18px;
+    }
+    textarea{
+        font-size: 18px;
+    }
+}
 @media (max-width: 600px){
     .Field{
         border-radius: 10px;

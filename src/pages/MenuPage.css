@@ -356,6 +356,62 @@
     color: red;
 }
 
+.createWindow{
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+.createField{
+    position: relative;
+    width: 60%;
+    height: 70%;
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.createFieldClose{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.createFieldTitle{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.createForm{
+    height: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.createFormArea{
+    height: auto;
+    flex: 1;
+}
+
+.createFormBtn{
+    font-size: 20px;
+    padding: 15px;
+    width: 150px;
+    border: 0px;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+}
 @media (max-width: 1300px){
     .mobile-cyber-filter-container{
         display: flex;
@@ -392,6 +448,14 @@
     }
     .reg-f{
         top: -10px;
+    }
+}
+@media (max-width: 700px){
+    .createField{
+        width: 90%;
+    }
+    .createFieldTitle{
+        font-size: 22px;
     }
 }
 @media (max-width: 940px){
@@ -431,3 +495,4 @@
         width: 50px;
     }
 }
+

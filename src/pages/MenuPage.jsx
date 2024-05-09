@@ -4,6 +4,15 @@ import './RegField.css'
 import Forms from '../components/Forms.jsx';
 import React, {Component, useEffect, useState} from 'react';
 import { ReactDOM } from 'react';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { addDoc, collection, getDocs, query, updateDoc, where, getDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage } from 'firebase/storage';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+
 let flag = true;
 function anim(){
     if (flag){
@@ -22,19 +31,79 @@ function anim(){
     }
 }
 
-function Open() {
-  document.querySelector('body').classList.add('no-scroll');
-    document.querySelector('.reg-f').classList.remove('close');
-}
-
-function CyberFilter() {
-  document.querySelector('.sportlist').classList.toggle('close');
-  document.querySelector('.cybersport').classList.toggle('close');
-}
-
 
 
 const MenuPage = ({forms}) => {
+    const [currForms, setcurrForms] = useState(forms)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxcD80x5kSFznUSrCH2xhpGyu5DTwaexQ",
+      authDomain: "teamsearch-75f8f.firebaseapp.com",
+      projectId: "teamsearch-75f8f",
+      storageBucket: "teamsearch-75f8f.appspot.com",
+      messagingSenderId: "618608717856",
+      appId: "1:618608717856:web:d5d2e7cbd4e14c14028c45"
+    };
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    const db = firebaseApp.firestore();
+    const storage = getStorage(firebaseApp, "gs://teamsearch-75f8f.appspot.com")
+    const auth = firebase.auth();
+    const [user, loading, error] = useAuthState(auth);
+    const CreateForm = async () => {
+      const email = user.email
+      const userCollection = collection(db, "users")
+      const q = await query(userCollection, where("email", "==", email))
+      const queryDoc = await getDocs(q)
+      const docRef = queryDoc.docs[0].ref
+      let age = 0
+      let avatarURL = ""
+      let name = ""
+      let sex = ""
+      let sport = ""
+      await getDoc(docRef).then(res => {
+        const data = res._document.data.value.mapValue.fields
+        age = data.age.stringValue
+        avatarURL = data.avatarURL.stringValue
+        name = data.name.stringValue
+        sex = data.sex.stringValue
+      })
+      console.log(age + sex + sport)
+      sport = document.getElementById("sport").value
+      let link = document.getElementById("link").value
+      let area = document.getElementById("area").value
+      const forms = collection(db, "forms");
+      addDoc(forms, {
+        email: email,
+        name: name,
+        age: age,
+        sex: sex,
+        avatarURL: avatarURL,
+        sport: sport,
+        link: link,
+        description: area
+      })
+      Open()
+      window.location.reload()
+    }
+    const [isCyber, setCyber] = useState(false)
+    function CyberFilter() {
+      document.querySelector('.sportlist').classList.toggle('close');
+      document.querySelector('.cybersport').classList.toggle('close');
+      setCyber(!isCyber)
+      console.log(isCyber)
+    }
+    useEffect(() => {
+      setcurrForms(forms.filter((form) => form.sport == "Мини-футбол" || "Баскебол" || "Волейбол" || "Настольный теннис" || "Бадминтон"))
+      console.log(currForms)
+    }, [])
+    function Open() {
+      document.querySelector('body').classList.add('no-scroll');
+      setShowForm(!isShowForm)
+    }
+    const Filter = (filter) => {
+      console.log(filter)
+      setcurrForms(forms.filter((form) => form.sport == filter))
+    }
+    const [isShowForm, setShowForm] = useState(false)
     window.scrollTo(0, 0);
     return (
       <div>
@@ -57,7 +126,7 @@ const MenuPage = ({forms}) => {
           <div className="applic">
             <div className='grey-rect'>
               <div className='black-rect'>
-                <div className='white-rect' onClick={() => (document.querySelector('.white-rect').classList.toggle('white-rect1'), anim())}>
+                <div className='white-rect' onClick={() => (document.querySelector('.white-rect').classList.toggle('white-rect1'), CyberFilter(), anim())}>
                   <img src={basketballico} alt="" className='basketballico' />
                   <img src={gameico} alt="" className='gameico' />
                 </div>
@@ -99,8 +168,29 @@ const MenuPage = ({forms}) => {
               
             </div>
             <div className='forms'>
-              <Forms forms={forms} />
+              <Forms forms={currForms} />
             </div>
+            {isShowForm && 
+            <>
+            <div className="createWindow">
+              <div className="createField">
+                <img src={cross} className="createFieldClose" onClick={Open} alt="" />
+                <h1 className="createFieldTitle">Анкета участника</h1>
+                <form className="createForm" onSubmit={CreateForm}>
+                  <select className="createFormInput reg_filter" name="" id="sport">
+                    <option value="Мини-футбол">Мини-футбол</option>
+                    <option value="Баскетбол">Баскетбол</option>
+                    <option value="Волейбол">Волейбол</option>
+                    <option value="Dota 2">Dota 2</option>
+                    <option value="The Finals">The Finals</option>
+                  </select>
+                  <input className="createFormInput" id='link' type="text" placeholder='Ссылка на любую соц сеть' />
+                  <textarea className="createFormArea" name="" id="area" placeholder='Создание анкеты'></textarea>
+                  <input type='submit' className="createFormBtn" value={"Создать"}/>
+                </form>
+              </div>
+            </div>
+            </>}
           </div>
         </div>
       </div>

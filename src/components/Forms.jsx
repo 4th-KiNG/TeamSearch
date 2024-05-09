@@ -8,7 +8,7 @@ const Forms = ({forms}) => {
         <div className="items">
             {forms.map((el)=> (
                 <Link className="link" to={`/user/${el.id}`}>
-                    <Form id={el.id} name={el.name} age={el.age} sex={el.sex} sport={el.sport} description={el.description} link={el.link} className="form" />
+                    <Form id={el.id} avatarURL={el.avatarURL} name={el.name} age={el.age} sex={el.sex} sport={el.sport} description={el.description} link={el.link} className="form" />
                 </Link>
             ))}
         </div>

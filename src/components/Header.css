@@ -12,7 +12,7 @@
 
 .header{
     position: relative;
-    z-index: 1;
+    z-index: auto;
     background-color: #3E3E3E;
     height: 100px;
     display: flex;
