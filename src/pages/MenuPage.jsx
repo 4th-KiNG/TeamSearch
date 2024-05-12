@@ -36,12 +36,13 @@ function anim(){
 const MenuPage = ({forms}) => {
     const [currForms, setcurrForms] = useState(forms)
     const firebaseConfig = {
-      apiKey: "AIzaSyAxcD80x5kSFznUSrCH2xhpGyu5DTwaexQ",
-      authDomain: "teamsearch-75f8f.firebaseapp.com",
-      projectId: "teamsearch-75f8f",
-      storageBucket: "teamsearch-75f8f.appspot.com",
-      messagingSenderId: "618608717856",
-      appId: "1:618608717856:web:d5d2e7cbd4e14c14028c45"
+      apiKey: "AIzaSyDuSJaAWnrUzScfksumcWpNazLZOZaVo00",
+        authDomain: "teamsearch-1bd4d.firebaseapp.com",
+        projectId: "teamsearch-1bd4d",
+        storageBucket: "teamsearch-1bd4d.appspot.com",
+        messagingSenderId: "335423463032",
+        appId: "1:335423463032:web:9a1211a5b4d199c9e4178d",
+        measurementId: "G-JQGHQTH1M4"
     };
     const firebaseApp = firebase.initializeApp(firebaseConfig);
     const db = firebaseApp.firestore();

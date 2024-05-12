@@ -12,36 +12,9 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getDocs, collection } from "firebase/firestore";
+import useStore from './store/useStore';
 function App() {
   const [forms, setForms] = useState([]);
-  const firebaseConfig = {
-    apiKey: "AIzaSyAxcD80x5kSFznUSrCH2xhpGyu5DTwaexQ",
-    authDomain: "teamsearch-75f8f.firebaseapp.com",
-    projectId: "teamsearch-75f8f",
-    storageBucket: "teamsearch-75f8f.appspot.com",
-    messagingSenderId: "618608717856",
-    appId: "1:618608717856:web:d5d2e7cbd4e14c14028c45"
-  };  
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  useEffect(() => {
-    const fetchForms = async () => {
-      try{
-      const users = collection(db, "forms");
-      const formsSnapshot = await getDocs(users)
-      const formData = formsSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }))
-      setForms(formData)
-      }
-      catch(error){
-        console.error("|||" + error)
-      }
-    }
-    fetchForms()
-  }, [])
-  
   
   return (
     <div className='fon'>

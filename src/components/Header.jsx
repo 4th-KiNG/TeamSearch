@@ -2,23 +2,11 @@ import {logo, logo_mobile, userico} from '../assets'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Header.css'
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import useStore from '../store/useStore';
  
 function Header() {
     const [isMenuOpen, setMenuOpen] = useState(false);
-    const firebaseConfig = {
-        apiKey: "AIzaSyAxcD80x5kSFznUSrCH2xhpGyu5DTwaexQ",
-        authDomain: "teamsearch-75f8f.firebaseapp.com",
-        projectId: "teamsearch-75f8f",
-        storageBucket: "teamsearch-75f8f.appspot.com",
-        messagingSenderId: "618608717856",
-        appId: "1:618608717856:web:d5d2e7cbd4e14c14028c45"
-    };  
-    const firebaseApp = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth()
-    const [user, loading, error] = useAuthState(auth);
+    const {user} = useStore()
     function open_menu(){
         document.querySelector('.nav-toggle').classList.add('opened')
         setMenuOpen(true);
