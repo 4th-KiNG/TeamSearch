@@ -1,8 +1,21 @@
-import React, {Component } from "react";
+import React, {Component, useEffect, useState } from "react";
 import './Form.css'
 import { avatar } from "../assets";
-
-const Form = ({id, name, age, sex, sport, description, link, avatarURL}) => {
+import useStore from "../store/useStore";
+const Form = ({sport, userEmail}) => {
+    const {GetUserByEmail} = useStore()
+    const [name, setName] = useState()
+    const [age, setAge] = useState()
+    const [sex, setSex] = useState()
+    const [avatarURL, setAvatarURL] = useState()
+    useEffect(() => {
+        GetUserByEmail(userEmail).then(res => {
+            setName(res.name.stringValue)
+            setAge(res.age.stringValue)
+            setAvatarURL(res.avatarURL.stringValue)
+            setSex(res.sex.stringValue)
+        })
+    }, [])
     return(
     <div className="item">
         <img src={avatarURL == "" ? avatar : avatarURL}  className="ava" alt="" />

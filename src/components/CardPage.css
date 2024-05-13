@@ -1,9 +1,49 @@
 .CardPage{
-    height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
     background-color: white;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    gap: 40px;
+    max-width: 100vw;
+    overflow: hidden;
+}
+.CardPageAvatar{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.desc{
+    text-wrap: wrap;
+    max-width: 500px;
+    max-height: 250px;
+    flex: 1;
+    overflow-wrap:break-word;
+    background-color: #c4c4c4;
+    overflow-y: scroll;
+    border-radius: 6px;
+    padding: 15px;
 }
 @media (max-width: 940px){
     .CardPage{
-        height: calc(100vh - 140px);
+        min-height: calc(100vh - 140px);
+    }
+}
+@media (max-width: 800px) {
+    .desc{
+        max-width: 300px;
+    }
+}
+@media (max-width: 550px) {
+    .CardPage{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 340px) {
+    .contact-information-txt{
+        text-align: center;
     }
 }

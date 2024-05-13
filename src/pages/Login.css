@@ -1,6 +1,7 @@
 .Login{
-    height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     padding: 40px;

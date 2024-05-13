@@ -2,16 +2,8 @@ import './MenuPage.css'
 import { basketballico, cross, gameico, playstick } from '../assets';
 import './RegField.css'
 import Forms from '../components/Forms.jsx';
-import React, {Component, useEffect, useState} from 'react';
-import { ReactDOM } from 'react';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import { addDoc, collection, getDocs, query, updateDoc, where, getDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getStorage } from 'firebase/storage';
-import { useAuthState } from 'react-firebase-hooks/auth';
-
+import React, {useEffect, useState} from 'react';
+import useStore from '../store/useStore.js';
 
 let flag = true;
 function anim(){
@@ -33,76 +25,39 @@ function anim(){
 
 
 
-const MenuPage = ({forms}) => {
+const MenuPage = () => {
+    const {GetForms, forms, CreateForm, user} = useStore()
     const [currForms, setcurrForms] = useState(forms)
-    const firebaseConfig = {
-      apiKey: "AIzaSyDuSJaAWnrUzScfksumcWpNazLZOZaVo00",
-        authDomain: "teamsearch-1bd4d.firebaseapp.com",
-        projectId: "teamsearch-1bd4d",
-        storageBucket: "teamsearch-1bd4d.appspot.com",
-        messagingSenderId: "335423463032",
-        appId: "1:335423463032:web:9a1211a5b4d199c9e4178d",
-        measurementId: "G-JQGHQTH1M4"
-    };
-    const firebaseApp = firebase.initializeApp(firebaseConfig);
-    const db = firebaseApp.firestore();
-    const storage = getStorage(firebaseApp, "gs://teamsearch-75f8f.appspot.com")
-    const auth = firebase.auth();
-    const [user, loading, error] = useAuthState(auth);
-    const CreateForm = async () => {
-      const email = user.email
-      const userCollection = collection(db, "users")
-      const q = await query(userCollection, where("email", "==", email))
-      const queryDoc = await getDocs(q)
-      const docRef = queryDoc.docs[0].ref
-      let age = 0
-      let avatarURL = ""
-      let name = ""
-      let sex = ""
-      let sport = ""
-      await getDoc(docRef).then(res => {
-        const data = res._document.data.value.mapValue.fields
-        age = data.age.stringValue
-        avatarURL = data.avatarURL.stringValue
-        name = data.name.stringValue
-        sex = data.sex.stringValue
-      })
-      console.log(age + sex + sport)
-      sport = document.getElementById("sport").value
-      let link = document.getElementById("link").value
-      let area = document.getElementById("area").value
-      const forms = collection(db, "forms");
-      addDoc(forms, {
-        email: email,
-        name: name,
-        age: age,
-        sex: sex,
-        avatarURL: avatarURL,
-        sport: sport,
-        link: link,
-        description: area
-      })
-      Open()
-      window.location.reload()
+    useEffect(() => {
+      GetForms()
+    }, [])
+    useEffect(() => {
+      setcurrForms(forms)
+      console.log(forms)
+    }, [forms])
+    const Create = async (e) => {
+      e.preventDefault()
+      if (user) {
+        const desctiption = document.getElementById("area").value
+        const link = document.getElementById("link").value
+        const sport = document.getElementById("sport").value
+        await CreateForm(desctiption, link, sport)
+        Open()
+      }
     }
     const [isCyber, setCyber] = useState(false)
     function CyberFilter() {
       document.querySelector('.sportlist').classList.toggle('close');
       document.querySelector('.cybersport').classList.toggle('close');
       setCyber(!isCyber)
-      console.log(isCyber)
     }
-    useEffect(() => {
-      setcurrForms(forms.filter((form) => form.sport == "Мини-футбол" || "Баскебол" || "Волейбол" || "Настольный теннис" || "Бадминтон"))
-      console.log(currForms)
-    }, [])
     function Open() {
       document.querySelector('body').classList.add('no-scroll');
       setShowForm(!isShowForm)
     }
     const Filter = (filter) => {
       console.log(filter)
-      setcurrForms(forms.filter((form) => form.sport == filter))
+      
     }
     const [isShowForm, setShowForm] = useState(false)
     window.scrollTo(0, 0);
@@ -177,7 +132,7 @@ const MenuPage = ({forms}) => {
               <div className="createField">
                 <img src={cross} className="createFieldClose" onClick={Open} alt="" />
                 <h1 className="createFieldTitle">Анкета участника</h1>
-                <form className="createForm" onSubmit={CreateForm}>
+                <form className="createForm" onSubmit={Create}>
                   <select className="createFormInput reg_filter" name="" id="sport">
                     <option value="Мини-футбол">Мини-футбол</option>
                     <option value="Баскетбол">Баскетбол</option>

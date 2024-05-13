@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } f
 import firebase from "firebase/compat/app";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { getStorage, ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
 function useStore(){
     const firebaseConfig = {
@@ -17,6 +17,7 @@ function useStore(){
     const app = firebase.initializeApp(firebaseConfig)
     const auth = getAuth(app)
     const db = firebase.firestore()
+    const storage = getStorage(app, "gs://teamsearch-1bd4d.appspot.com")
     const [user, loading, error] = useAuthState(auth)
     const [userId, setUserId] = useState("")
     const [username, setuserName] = useState("")
@@ -24,6 +25,8 @@ function useStore(){
     const [usersex, setuserSex] = useState("")
     const [usercity, setuserCity] = useState("")
     const [usersport, setuserSport] = useState("")
+    const [avatarURL, setAvatarURL] = useState("")
+    const [forms, setForms] = useState([])
     const CreateUser = async (email, password) => {
         await createUserWithEmailAndPassword(auth, email,password)
         .then(res => {
@@ -58,8 +61,16 @@ function useStore(){
             setuserSex(data.sex.stringValue)
             setuserCity(data.city.stringValue)
             setuserSport(data.sport.stringValue)
+            setAvatarURL(data.avatarURL.stringValue)
             setUserId(res.docs[0].id)
         })
+    }
+    const GetUserByEmail = async (email) => {
+        const users = await db.collection("users").where("email", "==", email).get().then(res => {
+            const data = res.docs[0]._delegate._document.data.value.mapValue.fields
+            return data
+        })
+        return users
     }
     const LoginUser = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password)
@@ -73,6 +84,54 @@ function useStore(){
     const LogOut = async () => {
         await auth.signOut()
     }
+    const UpdateUserAvatar = async (event) => {
+        const file = event.target.files[0]
+        try{
+            const storageRef = ref(storage, `avatars/${userId}`)
+            await uploadBytes(storageRef, file)
+            const url = await getDownloadURL(storageRef)
+            setAvatarURL(url)
+            await db.collection("users").doc(userId).update({
+                avatarURL: url
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+    const GetForms = async () => {
+        const formsSnapshot = await db.collection("forms").get();
+        const formsData = formsSnapshot.docs.map(item => {
+            const fields = item.data();
+            return {
+                formid: item.id,
+                sport: fields.sport,
+                link: fields.link,
+                description: fields.description,
+                userEmail: fields.userEmail
+            };
+        });
+        setForms(formsData);
+    }
+    const GetFormById = async (id) => {
+        const forms = await db.collection("forms").get()
+        return forms.docs.find(form => form.id == id)
+    }
+    const CreateForm = async (description, link, sport) => {
+        await db.collection("forms").add({
+            userEmail: user.email,
+            description: description,
+            link: link,
+            sport: sport
+        }).then(res => {
+            console.log(res)
+        }).catch(e => console.log(e))
+        window.location.reload()
+    }
+    const DeleteForm = async (id) => {
+        await db.collection("forms").doc(id).delete().then(res => {
+            console.log(res)
+        })
+    }
     return{
         user,
         CreateUser,
@@ -80,12 +139,20 @@ function useStore(){
         LogOut,
         UpdateUser,
         GetUser,
+        UpdateUserAvatar,
+        CreateForm,
+        GetFormById,
+        DeleteForm,
         username,
         userage,
         usercity,
         usersex,
         usersport,
-        userId
+        userId,
+        avatarURL,
+        GetForms,
+        forms,
+        GetUserByEmail
     }
 }
 

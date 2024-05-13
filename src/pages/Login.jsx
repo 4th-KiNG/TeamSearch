@@ -4,10 +4,12 @@ import './LK.css'
 import { logo, logosfedu, custom, emailico, lockico, eye, avatar, cross } from '../assets';
 import { Link } from 'react-router-dom';
 import useStore from '../store/useStore';
-const Login = ({cards}) => {
+
+
+const Login = () => {
     const [state, setState] = useState("login")
     const [isShowForm, setShowForm] = useState(false)
-    const {user, CreateUser, LoginUser, LogOut, UpdateUser, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
+    const {user, CreateUser, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const ShowPassword = () => {
@@ -22,6 +24,7 @@ const Login = ({cards}) => {
         if (user){
             setState("alsologin")
             GetUser()
+            console.log(user)
         }
         else{
             setEmail("")
@@ -121,8 +124,8 @@ const Login = ({cards}) => {
                 <div className='page'>
                     <div className='avatar-and-buttons'>
                         <div className='avatar'>
-                            <input type="file" className='input-photo' />
-                            <img src={avatar} style={{width: "100%", height: "100%", borderRadius: "50%"}} alt="" />
+                            <input type="file" onChange={UpdateUserAvatar} className='input-photo' />
+                            <img src={(avatarURL == "" || avatarURL == null) ? avatar : avatarURL} style={{width: "100%", height: "100%", borderRadius: "50%"}} alt="" />
                         </div>
                         <div style={{display: "flex", flexDirection: "column"}}>
                             <button className='button-lk' onClick={LogOut}>Выход</button>
@@ -139,6 +142,7 @@ const Login = ({cards}) => {
                         <p className='contact-information-txt'>Город: {usercity}</p>
                     </div>
                     <div className='cards'>
+
                     </div>
                     {isShowForm && <ReductForm/>}
                 </div>
