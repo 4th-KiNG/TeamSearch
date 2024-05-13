@@ -132,8 +132,15 @@ function useStore(){
             console.log(res)
         })
     }
+    const GetMyForms = async (mail) => {
+        const forms = await db.collection("forms").where("userEmail", "==", mail).get().then(res => {
+            return res.docs
+        })
+        return forms
+    }
     return{
         user,
+        GetMyForms,
         CreateUser,
         LoginUser,
         LogOut,

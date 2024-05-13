@@ -15,10 +15,10 @@ const Form = ({sport, userEmail}) => {
             setAvatarURL(res.avatarURL.stringValue)
             setSex(res.sex.stringValue)
         })
-    }, [])
+    }, [sport, userEmail])
     return(
     <div className="item">
-        <img src={avatarURL == "" ? avatar : avatarURL}  className="ava" alt="" />
+        <img src={avatarURL == "" ? avatar : avatarURL} className="ava" alt="" />
         <div className="main-info">
             <p style={{textAlign: "center", marginBottom: "15px"}} className="info-p">{name}</p>
             <p className="info-p">Возраст: {age}</p>

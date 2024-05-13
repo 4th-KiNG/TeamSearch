@@ -47,6 +47,7 @@
     background-color: #616161;
     border-radius: 100px;
     color: white;
+    width: 300px;
 }
 
 .select-mobile{
@@ -265,8 +266,6 @@
 
 .filter-window{
     position: fixed;
-    height: 0px;
-    visibility: hidden;
     overflow: hidden;
     border: #212529 solid 2px;
     border-radius: 0 0 10px 10px;
@@ -274,12 +273,13 @@
     top: 100px;
     background-color: white;
     padding: 30px;
+    height: 250px;
     box-sizing: border-box;
     transition: all 200ms;
 }
 
 .filter-window-open{
-    height: 470px;
+    
     visibility: visible;
 }
 
@@ -297,6 +297,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    cursor: pointer;
 }
 .filters-mobile>h1{
     font-size: 24px;
@@ -460,7 +461,7 @@
 }
 @media (max-width: 940px){
     .filter-window{
-        top: 80px;
+        top: 70px;
     }
 }
 

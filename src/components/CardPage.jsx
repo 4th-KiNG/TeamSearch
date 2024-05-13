@@ -7,7 +7,7 @@ import '../pages/LK.css'
 function CardPage() {
     const {id} = useParams()
     const nav = useNavigate()
-    const {GetFormById, GetUserByEmail, DeleteForm} = useStore()
+    const {GetFormById, GetUserByEmail, DeleteForm, user} = useStore()
     const [data, setData] = useState()
     const [email, setEmail] = useState()
     const [name, setName] = useState()
@@ -54,7 +54,7 @@ function CardPage() {
                     <img style={{width: "100%", height: "100%", borderRadius: "50%"}} src={avatarURL == "" ? avatar : avatarURL} alt="" />
                 </div>
                 <p style={{textAlign: "center"}} className='contact-information-txt'>{name}</p>
-                <button className='button-lk' onClick={Delete}>Удалить анкету</button>
+                {email == user.email && <button className='button-lk' onClick={Delete}>Удалить анкету</button>}
             </div>
             <div className='contact-information in-card'>
                 <p className='contact-information-txt'>Вид спорта: {sport}</p>
@@ -63,7 +63,7 @@ function CardPage() {
                 <p className='contact-information-txt'>Ссылки на соц сети: {link}</p>
                 <p className='contact-information-txt'>Описание:</p>
                 <div className='contact-information-txt'>
-                    <p className='desc'>{description}</p>
+                    {description != "" && <p className='desc'>{description}</p>}
                 </div>
             </div>
             

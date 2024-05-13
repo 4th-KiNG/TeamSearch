@@ -9,9 +9,10 @@ import useStore from '../store/useStore';
 const Login = () => {
     const [state, setState] = useState("login")
     const [isShowForm, setShowForm] = useState(false)
-    const {user, CreateUser, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
+    const {user,GetMyForms, CreateUser, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
+    const [myForms, setMyForms] = useState([])
     const ShowPassword = () => {
         if (document.querySelector(".password").type == "password"){
             document.querySelector(".password").type = "text"
@@ -24,7 +25,10 @@ const Login = () => {
         if (user){
             setState("alsologin")
             GetUser()
-            console.log(user)
+            GetMyForms(user.email).then(res => {
+                console.log(res)
+                setMyForms(res)
+            })
         }
         else{
             setEmail("")
@@ -142,7 +146,18 @@ const Login = () => {
                         <p className='contact-information-txt'>Город: {usercity}</p>
                     </div>
                     <div className='cards'>
-
+                        <h1 style={{textAlign: "center"}} className='contact-information-title'>Мои анкеты</h1>
+                        {myForms.map(form => {
+                            return(
+                                <>
+                                <Link style={{textDecoration: "none"}} to={`/form/${form.id}`}>
+                                    <div className='lk-card'>
+                                        <p>Вид спорта: {form._delegate._document.data.value.mapValue.fields.sport.stringValue}</p>
+                                    </div>
+                                </Link>
+                                </>
+                            )
+                        })}
                     </div>
                     {isShowForm && <ReductForm/>}
                 </div>

@@ -23,17 +23,15 @@ function anim(){
     }
 }
 
-
-
 const MenuPage = () => {
     const {GetForms, forms, CreateForm, user} = useStore()
-    const [currForms, setcurrForms] = useState(forms)
+    const [currForms, setcurrForms] = useState(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
     useEffect(() => {
       GetForms()
     }, [])
     useEffect(() => {
-      setcurrForms(forms)
-      console.log(forms)
+      setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
+      
     }, [forms])
     const Create = async (e) => {
       e.preventDefault()
@@ -46,18 +44,38 @@ const MenuPage = () => {
       }
     }
     const [isCyber, setCyber] = useState(false)
+    const [isFiltersOpen, setFiltersOpen] = useState(false)
+    const [filter, setFilter] = useState()
     function CyberFilter() {
       document.querySelector('.sportlist').classList.toggle('close');
       document.querySelector('.cybersport').classList.toggle('close');
       setCyber(!isCyber)
     }
+    useEffect(() => {
+      if (isCyber){
+        setcurrForms(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
+        console.log(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
+        document.querySelector(".mobile-cyber-filter").classList.add("checked")
+      }
+      else{
+        setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
+        document.querySelector(".mobile-cyber-filter").classList.remove("checked")
+      }
+      setFilter("")
+    }, [isCyber])
     function Open() {
-      document.querySelector('body').classList.add('no-scroll');
+      document.querySelector('body').classList.toggle('no-scroll');
       setShowForm(!isShowForm)
     }
     const Filter = (filter) => {
-      console.log(filter)
-      
+      setcurrForms(forms.filter(form => form.sport == filter))
+      setFiltersOpen(false)
+      setFilter(filter)
+    }
+    const CleanFilters = () => {
+      isCyber ? setcurrForms(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust")) : setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
+      setFiltersOpen(false)
+      setFilter("")
     }
     const [isShowForm, setShowForm] = useState(false)
     window.scrollTo(0, 0);
@@ -66,17 +84,17 @@ const MenuPage = () => {
         <div className="mainPage">
           <div className="filters">
             <div className='sportlist'>
-              <p className='filter'>Баскетбол</p>
-              <p className='filter'>Волейбол</p>
-              <p className='filter'>Мини-футбол</p>
-              <p className='filter'>Настольный теннис</p>
-              <p className='filter'>Бадминтон</p>
+              <p className={filter == "Баскетбол" ? 'filter select' : "filter"} onClick={() => Filter("Баскетбол")}>Баскетбол</p>
+              <p className={filter == "Волейбол" ? 'filter select' : "filter"} onClick={() => Filter("Волейбол")}>Волейбол</p>
+              <p className={filter == "Мини-футбол" ? 'filter select' : "filter"} onClick={() => Filter("Мини-футбол")}>Мини-футбол</p>
+              <p className={filter == "Настольный теннис" ? 'filter select' : "filter"} onClick={() => Filter("Настольный теннис")}>Настольный теннис</p>
+              <p className={filter == "Бадминтон" ? 'filter select' : "filter"} onClick={() => Filter("Бадминтон")}>Бадминтон</p>
             </div>
             <div className='cybersport close'>
-              <p className='filter'>Dota 2</p>
-              <p className='filter'>CS:GO</p>
-              <p className='filter'>The Finals</p>
-              <p className='filter'>Rust</p>
+              <p className={filter == "Dota 2" ? 'filter select' : "filter"} onClick={() => Filter("Dota 2")}>Dota 2</p>
+              <p className={filter == "CS:GO" ? 'filter select' : "filter"} onClick={() => Filter("CS:GO")}>CS:GO</p>
+              <p className={filter == "The Finals" ? 'filter select' : "filter"} onClick={() => Filter("The Finals")}>The Finals</p>
+              <p className={filter == "Rust" ? 'filter select' : "filter"} onClick={() => Filter("Rust")}>Rust</p>
             </div>
           </div>
           <div className="applic">
@@ -90,10 +108,10 @@ const MenuPage = () => {
             </div>
             <div className='filter_for_mobile'>
               <div className="mobile-filters">
-                <button className='create-filter'>Фильтры</button>
+                <button className='create-filter' onClick={() => (setFiltersOpen(true), document.querySelector('body').classList.toggle('no-scroll'))}>Фильтры</button>
                 <div className="mobile-cyber-filter-container">
                   <img src={playstick} className="play-ico" alt="" />
-                  <div className="mobile-cyber-filter">
+                  <div className="mobile-cyber-filter" onClick={() => setCyber(!isCyber)}>
                   </div>
                 </div>
               </div>
@@ -101,28 +119,37 @@ const MenuPage = () => {
               <div className='create-f'><button className='create-f-btn' onClick={Open}>Создать анкету+</button></div>
               <div className='create-f-mobile'><button className='create-f-btn' onClick={Open}>+</button></div>
             </div>
+            {isFiltersOpen &&
+            <>
             <div className="filter-window">
               <div className="filter-window-title">
                 <div className="filters-mobile">
+                  {!isCyber && 
+                  <>
                   <h1>Спорт</h1>
-                  <p className="filter-mobile">Баскетбол</p>
-                  <p className="filter-mobile">Волейбол</p>
-                  <p className="filter-mobile">Мини-Футбол</p>
-                  <p className="filter-mobile">Настольный теннис</p>
-                  <p className="filter-mobile">Бадминтон</p>
+                  <p className={filter == "Баскетбол" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Баскетбол")}>Баскетбол</p>
+                  <p className={filter == "Волейбол" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Волейбол")}>Волейбол</p>
+                  <p className={filter == "Мини-Футбол" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Мини-футбол")}>Мини-Футбол</p>
+                  <p className={filter == "Настольный теннис" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Настольный теннис")}>Настольный теннис</p>
+                  <p className={filter == "Бадминтон" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Бадминтон")}>Бадминтон</p>
+                  </>}
+                  {isCyber && 
+                  <>
                   <h1>Киберспорт</h1>
-                  <p className="filter-mobile">Dota 2</p>
-                  <p className="filter-mobile">CS:GO</p>
-                  <p className="filter-mobile">The Finals</p>
-                  <p className="filter-mobile">Rust</p>
+                  <p className={filter == "Dota 2" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Dota 2")}>Dota 2</p>
+                  <p className={filter == "CS:GO" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("CS:GO")}>CS:GO</p>
+                  <p className={filter == "The Finals" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("The Finals")}>The Finals</p>
+                  <p className={filter == "Rust" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Rust")}>Rust</p>
+                  </>}
                 </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-                  <img src={cross} className='cross-img-filter' alt="" />
-                  <p style={{margin: "0"}}>Отчистить все фильты</p>
+                  <img src={cross} onClick={() => (setFiltersOpen(false), document.querySelector('body').classList.toggle('no-scroll'))} className='cross-img-filter' alt="" />
+                  <p style={{margin: "0", cursor: "pointer"}} onClick={CleanFilters}>Отчистить все фильты</p>
                 </div>
               </div>
               
             </div>
+            </>}
             <div className='forms'>
               <Forms forms={currForms} />
             </div>
