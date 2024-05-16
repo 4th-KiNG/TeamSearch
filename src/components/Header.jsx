@@ -16,11 +16,13 @@ function Header() {
         document.querySelector('.nav-toggle').classList.remove('opened')
         setMenuOpen(false);
         document.querySelector('body').classList.remove('no-scroll');
+        window.scrollTo(0,0)
     }
     function toggle_menu(){
         document.querySelector('.nav-toggle').classList.toggle('opened')
         setMenuOpen(!isMenuOpen);
         document.querySelector('body').classList.toggle('no-scroll');
+        window.scrollTo(0,0)
     }
     return(
         <div>

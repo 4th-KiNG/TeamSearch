@@ -27,6 +27,8 @@ function useStore(){
     const [usersport, setuserSport] = useState("")
     const [avatarURL, setAvatarURL] = useState("")
     const [forms, setForms] = useState([])
+    const [userNotFound, setNotFound] = useState(false)
+    const [correct, setCorrect] = useState(true)
     const CreateUser = async (email, password) => {
         await createUserWithEmailAndPassword(auth, email,password)
         .then(res => {
@@ -54,16 +56,20 @@ function useStore(){
         })
     }
     const GetUser = async () => {
-        db.collection("users").where('email', "==", user.email).get().then(res => {
-            const data = res.docs[0]._delegate._document.data.value.mapValue.fields
-            setuserName(data.name.stringValue)
-            setuserAge(data.age.stringValue)
-            setuserSex(data.sex.stringValue)
-            setuserCity(data.city.stringValue)
-            setuserSport(data.sport.stringValue)
-            setAvatarURL(data.avatarURL.stringValue)
-            setUserId(res.docs[0].id)
-        })
+            db.collection("users").where('email', "==", user.email).get().then(res => {
+            
+                const data = res.docs[0]._delegate._document.data.value.mapValue.fields
+                setuserName(data.name.stringValue)
+                setuserAge(data.age.stringValue)
+                setuserSex(data.sex.stringValue)
+                setuserCity(data.city.stringValue)
+                setuserSport(data.sport.stringValue)
+                setAvatarURL(data.avatarURL.stringValue)
+                setUserId(res.docs[0].id)
+                setCorrect(true)
+            }).catch(e => setCorrect(false))
+            
+        
     }
     const GetUserByEmail = async (email) => {
         const users = await db.collection("users").where("email", "==", email).get().then(res => {
@@ -79,7 +85,7 @@ function useStore(){
                 setUserId(res.docs[0].id)
                 
             })
-        }).catch(error => console.log(error))
+        }).catch(error => setNotFound(true))
     }
     const LogOut = async () => {
         await auth.signOut()
@@ -125,7 +131,7 @@ function useStore(){
         }).then(res => {
             console.log(res)
         }).catch(e => console.log(e))
-        window.location.reload()
+        
     }
     const DeleteForm = async (id) => {
         await db.collection("forms").doc(id).delete().then(res => {
@@ -150,6 +156,8 @@ function useStore(){
         CreateForm,
         GetFormById,
         DeleteForm,
+        userNotFound,
+        correct,
         username,
         userage,
         usercity,

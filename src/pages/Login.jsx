@@ -9,10 +9,12 @@ import useStore from '../store/useStore';
 const Login = () => {
     const [state, setState] = useState("login")
     const [isShowForm, setShowForm] = useState(false)
-    const {user,GetMyForms, CreateUser, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
+    const {user,GetMyForms, CreateUser, userNotFound, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const [myForms, setMyForms] = useState([])
+    const [errShow, setErrShow] = useState()
+    
     const ShowPassword = () => {
         if (document.querySelector(".password").type == "password"){
             document.querySelector(".password").type = "text"
@@ -29,6 +31,7 @@ const Login = () => {
                 console.log(res)
                 setMyForms(res)
             })
+            
         }
         else{
             setEmail("")
@@ -38,6 +41,7 @@ const Login = () => {
     }, [user])
     const BodyFix = () => {
         setShowForm(!isShowForm)
+        setErrShow(false)
         document.querySelector("body").classList.toggle("no-scroll")
     }
     const handleEmailChange = (event) => {
@@ -62,23 +66,44 @@ const Login = () => {
         const sex = document.querySelector(".lk-sex").value
         const sport = document.querySelector(".lk-sport").value
         const city = document.querySelector(".lk-city").value
-        await UpdateUser(name, age, sex, sport, city)
-        await GetUser()
-        BodyFix()
+        if (age != "" && age < 0){
+            setErrShow(true)
+        }
+        else{
+            await UpdateUser(name, age, sex, sport, city)
+            await GetUser()
+            BodyFix()
+        }
+        
     }
+    
     const ReductForm = () => {
+        const [name, setName] = useState(username)
+        const [age, setAge] = useState(userage)
+        const [sex, setSex] = useState(usersex)
+        const [sport, setSport] = useState(usersport)
+        const [city, setCity] = useState(usercity)
+
+        const handleNameChange = (e) => setName(e.target.value)
+        const handleAgeChange = (e) => setAge(e.target.value)
+        const handleSexChange = (e) => setSex(e.target.value)
+        const handleSportChange = (e) => setSport(e.target.value)
+        const handleCityChange = (e) => setCity(e.target.value)
         return(
             <div className='form1'>
                 <div className='form-container'>
                     <img src={cross} onClick={BodyFix} className='close-btn' alt="" />
                     <div className='info-reduct'>
-                        <p>ФИО: <input type="text" className='lk-name' /></p>
-                        <p>Возраст: <input type="number" className='lk-age' /></p>
-                        <p>Пол: <input type="text" className='lk-sex' /></p>
-                        <p>Профильный спорт: <input type="text" className='lk-sport' name="" id="" /></p>
-                        <p>Город: <input type="text" className='lk-city' name="" id="" /></p>
+                        <p>ФИО: <input type="text" value={name} onChange={handleNameChange} className='lk-name' /></p>
+                        <p>Возраст: <input type="number" value={age} onChange={handleAgeChange} className='lk-age' /></p>
+                        <p>Пол: <input type="text" value={sex} onChange={handleSexChange} className='lk-sex' /></p>
+                        <p>Профильный спорт: <input type="text" value={sport} onChange={handleSportChange} className='lk-sport' name="" id="" /></p>
+                        <p>Город: <input type="text" value={city} onChange={handleCityChange} className='lk-city' name="" id="" /></p>
                     </div>
-                    <button className='save-btn' onClick={update}>Сохранить</button>
+                    <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
+                        <button className='save-btn' onClick={update}>Сохранить</button>
+                        {errShow && <p style={{color: "#c82f00"}}>Возраст не должен быть отрицательным</p>}
+                    </div>
                 </div>
             </div>
         )
@@ -115,11 +140,13 @@ const Login = () => {
                     <h1 className='formtxt'>Вход</h1>
                         <div className="input-with-ico"><img src={emailico} className='input-ico' alt="" /><input type="email" placeholder='email' value={Email} onChange={handleEmailChange} className='logininput' /></div>
                         <div className="input-with-ico"><img src={lockico} className='input-ico' alt="" /><input type="password" placeholder='password' value={Password} onChange={handlePasswordChange} className='logininput password' /><img src={eye} onClick={ShowPassword} className='input-ico' alt="" /></div>
+                        {userNotFound && <p style={{color: "#c82f00", textAlign: "center"}}>Пользователь не найден!</p>}
                     </div>
                     <div style={{display:"flex", flexDirection: "column", gap: "15px"}}>
                         <button className='mainbutton' onClick={() => LoginUser(Email, Password)}>Войти</button>
                         <button className='smallbutton' onClick={RegChange}>Зарегестрироваться</button>
                     </div>
+                    
                 </div>
             </div>
             }

@@ -413,6 +413,9 @@
     color: white;
     border-radius: 6px;
 }
+.err-txt{
+    color: #c82f00;
+}
 @media (max-width: 1300px){
     .mobile-cyber-filter-container{
         display: flex;

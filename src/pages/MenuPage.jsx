@@ -33,14 +33,21 @@ const MenuPage = () => {
       setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
       
     }, [forms])
+    const [errShow, setErrShow] = useState(false)
     const Create = async (e) => {
       e.preventDefault()
       if (user) {
         const desctiption = document.getElementById("area").value
         const link = document.getElementById("link").value
         const sport = document.getElementById("sport").value
-        await CreateForm(desctiption, link, sport)
-        Open()
+        if (link != "" && sport != ""){
+          await CreateForm(desctiption, link, sport)
+          Open()
+          console.log(link, desctiption)
+        }
+        else{
+          setErrShow(true)
+        }
       }
     }
     const [isCyber, setCyber] = useState(false)
@@ -169,7 +176,10 @@ const MenuPage = () => {
                   </select>
                   <input className="createFormInput" id='link' type="text" placeholder='Ссылка на любую соц сеть' />
                   <textarea className="createFormArea" name="" id="area" placeholder='Создание анкеты'></textarea>
-                  <input type='submit' className="createFormBtn" value={"Создать"}/>
+                  <div style={{display: "flex", gap: "10px", alignItems: "center"}}>
+                    <input type='submit' className="createFormBtn" value={"Создать"}/>
+                    {errShow && <p className='err-txt'>Заполните все поля!</p>}
+                  </div>
                 </form>
               </div>
             </div>
