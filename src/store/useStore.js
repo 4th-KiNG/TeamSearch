@@ -28,7 +28,6 @@ function useStore(){
     const [avatarURL, setAvatarURL] = useState("")
     const [forms, setForms] = useState([])
     const [userNotFound, setNotFound] = useState(false)
-    const [correct, setCorrect] = useState(true)
     const CreateUser = async (email, password) => {
         await createUserWithEmailAndPassword(auth, email,password)
         .then(res => {
@@ -44,7 +43,7 @@ function useStore(){
             }).then(res => {
                 setUserId(res.id)
             })
-        }).catch(error => console.log(error))
+        }).catch(e => setNotFound(true))
     }
     const UpdateUser = async (name, age, sex, sport, city) => {
         await db.collection("users").doc(userId).update({
@@ -66,8 +65,8 @@ function useStore(){
                 setuserSport(data.sport.stringValue)
                 setAvatarURL(data.avatarURL.stringValue)
                 setUserId(res.docs[0].id)
-                setCorrect(true)
-            }).catch(e => setCorrect(false))
+                setNotFound(false)
+            })
             
         
     }
@@ -156,8 +155,8 @@ function useStore(){
         CreateForm,
         GetFormById,
         DeleteForm,
+        setNotFound,
         userNotFound,
-        correct,
         username,
         userage,
         usercity,

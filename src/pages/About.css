@@ -105,6 +105,7 @@ p.about-txt{
     font-family: '20011';
     max-width: 200px;
     transition: .2s linear;
+    border: 1px black solid;
 }
 .send-btn:hover {
     box-shadow: #b2b2b2 0 0px 0px 40px inset;

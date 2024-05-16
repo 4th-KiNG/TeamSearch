@@ -4,6 +4,7 @@
   "homepage": "https://4th-king.github.io/TeamSearch/?#/",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@firebase/storage": "^0.12.4",
     "@react-three/drei": "^9.97.6",
     "@react-three/fiber": "^8.15.16",
