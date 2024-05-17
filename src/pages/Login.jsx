@@ -123,7 +123,7 @@ const Login = () => {
             </div>
         )
     }
-    if (isLoading){
+    if (isLoading && state == "alsologin"){
         document.querySelector("body").classList.add("no-scroll")
         return(
             <div>
