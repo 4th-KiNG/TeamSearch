@@ -4,6 +4,7 @@ import './RegField.css'
 import Forms from '../components/Forms.jsx';
 import React, {useEffect, useState} from 'react';
 import useStore from '../store/useStore.js';
+import LoadingPage from '../components/LoadingPage';
 
 let flag = true;
 function anim(){
@@ -26,12 +27,19 @@ function anim(){
 const MenuPage = () => {
     const {GetForms, forms, CreateForm, user} = useStore()
     const [currForms, setcurrForms] = useState(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
+    const [isLoading, setLoading] = useState(true)
+    let LetOnes = false
+    const FormsData = async () => {
+      if (LetOnes) return;
+      LetOnes = false
+      await GetForms()
+      setLoading(false)
+    }
     useEffect(() => {
-      GetForms()
+      FormsData()
     }, [])
     useEffect(() => {
       setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
-      
     }, [forms])
     const [errShow, setErrShow] = useState(false)
     const Create = async (e) => {
@@ -62,11 +70,11 @@ const MenuPage = () => {
       if (isCyber){
         setcurrForms(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
         console.log(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
-        document.querySelector(".mobile-cyber-filter").classList.add("checked")
+        if (!LetOnes){document.querySelector(".mobile-cyber-filter").classList.add("checked")}
       }
       else{
         setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
-        document.querySelector(".mobile-cyber-filter").classList.remove("checked")
+        //document.querySelector(".mobile-cyber-filter").classList.remove("checked")
       }
       setFilter("")
     }, [isCyber])
@@ -86,6 +94,15 @@ const MenuPage = () => {
     }
     const [isShowForm, setShowForm] = useState(false)
     window.scrollTo(0, 0);
+    if (isLoading){
+      document.querySelector("body").classList.add("no-scroll")
+      return(
+        <div>
+          <LoadingPage></LoadingPage>
+        </div>
+      )
+    }
+    document.querySelector("body").classList.remove("no-scroll")
     return (
       <div>
         <div className="mainPage">

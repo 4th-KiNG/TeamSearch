@@ -4,6 +4,8 @@ import './CardPage.css'
 import useStore from '../store/useStore'
 import { avatar } from '../assets'
 import '../pages/LK.css'
+import LoadingPage from './LoadingPage'
+
 function CardPage() {
     const {id} = useParams()
     const nav = useNavigate()
@@ -17,21 +19,39 @@ function CardPage() {
     const [link, setLink] = useState()
     const [description, setDescription] = useState()
     const [avatarURL, setAvatarURL] = useState()
-    useEffect(() => {
+    const [isLoading, setLoading] = useState(true)
+    let LetOnes = false;
+    let LetOnes2 = false;
+    const EmailData = async () => {
+        if (LetOnes) return;
+        LetOnes = true
         if (email){
-            GetUserByEmail(email).then(res => {
+            await GetUserByEmail(email).then(res => {
                 setName(res.name.stringValue)
                 setAge(res.age.stringValue)
                 setAvatarURL(res.avatarURL.stringValue)
                 setSex(res.sex.stringValue)
             })
         }
-        
-    }, [email])
+        if (LetOnes && LetOnes2){
+            setLoading(false)
+        }
+    }
     useEffect(() => {
-        GetFormById(id).then(res => {
+        EmailData()
+    }, [email])
+    const FormData = async () => {
+        if (LetOnes2) return;
+        LetOnes2 = true
+        await GetFormById(id).then(res => {
             setData(res._delegate._document.data.value.mapValue.fields)
         })
+        if (LetOnes && LetOnes2){
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        FormData()
     }, [])
     useEffect(() => {
         if (data){
@@ -44,6 +64,13 @@ function CardPage() {
     const Delete = () => {
         nav("/Menu")
         DeleteForm(id)
+    }
+    if (isLoading){
+        return(
+            <div>
+                <LoadingPage></LoadingPage>
+            </div>
+        )
     }
     return (
         <>

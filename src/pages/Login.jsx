@@ -4,7 +4,7 @@ import './LK.css'
 import { logo, logosfedu, custom, emailico, lockico, eye, avatar, cross } from '../assets';
 import { Link } from 'react-router-dom';
 import useStore from '../store/useStore';
-
+import LoadingPage from '../components/LoadingPage';
 
 const Login = () => {
     const [state, setState] = useState("login")
@@ -12,9 +12,11 @@ const Login = () => {
     const {user,GetMyForms, CreateUser, userNotFound, setNotFound, LoginUser, LogOut, UpdateUser, UpdateUserAvatar, avatarURL, username, userage, usersex, usersport, usercity, GetUser, userId} = useStore()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
+    const [isLoading, setLoading] = useState(true)
     const [myForms, setMyForms] = useState([])
     const [errShow, setErrShow] = useState()
-    
+    let LetOnes = false
+    let LetOnes2 = false
     const ShowPassword = () => {
         if (document.querySelector(".password").type == "password"){
             document.querySelector(".password").type = "text"
@@ -23,21 +25,32 @@ const Login = () => {
             document.querySelector(".password").type = "password"
         }
     }
-    useEffect(() => {
+    const UserData = async () => {
+        
         if (user){
             setState("alsologin")
-            GetUser()
-            GetMyForms(user.email).then(res => {
+            await GetUser().then(res => {
+                LetOnes2 = true
+            })
+            await GetMyForms(user.email).then(res => {
                 console.log(res)
                 setMyForms(res)
+                LetOnes = true
             })
-            
+            console.log(LetOnes + "|||" + LetOnes2)
+            if (LetOnes && LetOnes2){
+                setLoading(false)
+            }
         }
         else{
             setEmail("")
             setPassword("")
             setState("login")
         }
+    }
+    useEffect(() => {
+        UserData()
+        console.log(isLoading)
     }, [user])
     const BodyFix = () => {
         setShowForm(!isShowForm)
@@ -110,7 +123,16 @@ const Login = () => {
             </div>
         )
     }
-    
+    if (isLoading){
+        document.querySelector("body").classList.add("no-scroll")
+        return(
+            <div>
+                <LoadingPage></LoadingPage>
+            </div>
+        )
+        
+    }
+    document.querySelector("body").classList.remove("no-scroll")
     return (
         <div className='Login'>
             {state === "reg" && 

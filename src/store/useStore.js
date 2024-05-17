@@ -130,7 +130,7 @@ function useStore(){
         }).then(res => {
             console.log(res)
         }).catch(e => console.log(e))
-        
+        window.location.reload()
     }
     const DeleteForm = async (id) => {
         await db.collection("forms").doc(id).delete().then(res => {

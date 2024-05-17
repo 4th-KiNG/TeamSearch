@@ -9,6 +9,7 @@ import background from './background.png'
 import basketballico from './basketballico.png'
 import gameico from './gameico.png'
 import cross from './cross.png'
+import ball from './ball.gif'
 import strong from './strong.svg'
 import strong1 from './strong1.svg'
 import playstick from './playstick.png'
@@ -20,6 +21,7 @@ import lockico from './lockico.svg'
 import eye from './eye.svg'
 import avatar from './avatar.svg'
 export {
+    ball,
     avatar,
     eye,
     playstick,
