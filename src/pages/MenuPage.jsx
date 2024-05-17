@@ -70,11 +70,11 @@ const MenuPage = () => {
       if (isCyber){
         setcurrForms(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
         console.log(forms.filter(form => form.sport == "Dota 2" || form.sport == "CS:GO" || form.sport == "The Finals" || form.sport == "Rust"))
-        if (!LetOnes){document.querySelector(".mobile-cyber-filter").classList.add("checked")}
+        if (!isLoading){document.querySelector(".mobile-cyber-filter").classList.add("checked")}
       }
       else{
         setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
-        //document.querySelector(".mobile-cyber-filter").classList.remove("checked")
+        if (!isLoading){document.querySelector(".mobile-cyber-filter").classList.remove("checked")}
       }
       setFilter("")
     }, [isCyber])
