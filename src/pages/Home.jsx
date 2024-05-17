@@ -4,6 +4,8 @@ import { Card } from '../components'
 import Text from '../components/Text'
 import { Link } from 'react-router-dom'
 import { Tilt } from 'react-tilt'
+import useStore from '../store/useStore'
+
 const defaultOptions = {
 	reverse:        false,  // reverse the tilt direction
 	max:            35,     // max tilt rotation (degrees)
@@ -17,6 +19,7 @@ const defaultOptions = {
 }
 
 const Home = () => {
+    const {user} = useStore()
     return (
         <div className='container1'>
             <div className="Home">
@@ -40,7 +43,7 @@ const Home = () => {
                     <Card title={"Удобный интерфейс"} discription={"Благодаря простой навигации и четкому дизайну вы сможете легко находить всю нужную информацию - все это для того, чтобы ваше погружение в мир спорта было максимально приятным и живым. С нами вы сможете погрузитесь в захватывающий мир спорта и киберспорта без лишних хлопот!"}></Card>
                 </div>
                 <div className='menu-btn'>
-                    <Link to='/Menu' className='menu-btn'>Перейти к анкетам</Link>
+                    <Link to={user ? '/Menu' : "/Login"} className='menu-btn'>Перейти к анкетам</Link>
                 </div>
             </div>
         </div>

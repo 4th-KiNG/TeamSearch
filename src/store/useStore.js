@@ -136,6 +136,7 @@ function useStore(){
         await db.collection("forms").doc(id).delete().then(res => {
             console.log(res)
         })
+        window.location.reload()
     }
     const GetMyForms = async (mail) => {
         const forms = await db.collection("forms").where("userEmail", "==", mail).get().then(res => {

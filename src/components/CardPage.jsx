@@ -87,7 +87,7 @@ function CardPage() {
                 <p className='contact-information-txt'>Вид спорта: {sport}</p>
                 <p className='contact-information-txt'>Возраст: {age}</p>
                 <p className='contact-information-txt'>Пол: {sex}</p>
-                <p className='contact-information-txt'>Ссылки на соц сети: {link}</p>
+                <p className='contact-information-txt'>Ссылки на соц сети: <a href={`${link}`} style={{textDecoration: "none"}}>{link}</a></p>
                 <p className='contact-information-txt'>Описание:</p>
                 <div className='contact-information-txt'>
                     {description != "" && <p className='desc'>{description}</p>}

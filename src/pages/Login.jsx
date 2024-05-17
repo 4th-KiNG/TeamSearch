@@ -5,7 +5,7 @@ import { logo, logosfedu, custom, emailico, lockico, eye, avatar, cross } from '
 import { Link } from 'react-router-dom';
 import useStore from '../store/useStore';
 import LoadingPage from '../components/LoadingPage';
-
+import './RegField.css'
 const Login = () => {
     const [state, setState] = useState("login")
     const [isShowForm, setShowForm] = useState(false)
@@ -101,7 +101,6 @@ const Login = () => {
 
         const handleNameChange = (e) => setName(e.target.value)
         const handleAgeChange = (e) => setAge(e.target.value)
-        const handleSexChange = (e) => setSex(e.target.value)
         const handleSportChange = (e) => setSport(e.target.value)
         const handleCityChange = (e) => setCity(e.target.value)
         return(
@@ -111,7 +110,12 @@ const Login = () => {
                     <div className='info-reduct'>
                         <p>ФИО: <input type="text" value={name} onChange={handleNameChange} className='lk-name' /></p>
                         <p>Возраст: <input type="number" value={age} onChange={handleAgeChange} className='lk-age' /></p>
-                        <p>Пол: <input type="text" value={sex} onChange={handleSexChange} className='lk-sex' /></p>
+                        <p>Пол: 
+                            <select className='lk-sex reg_filter' name="" id="">
+                                <option value="Мужской">Мужской</option>
+                                <option value="Женский">Женский</option>
+                            </select>
+                        </p>
                         <p>Профильный спорт: <input type="text" value={sport} onChange={handleSportChange} className='lk-sport' name="" id="" /></p>
                         <p>Город: <input type="text" value={city} onChange={handleCityChange} className='lk-city' name="" id="" /></p>
                     </div>

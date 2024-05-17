@@ -33,7 +33,7 @@ function Header() {
                     
                     <div><Link to='/' className='infoTxt'>На главную</Link></div>
                     <div><Link to='/About' className='infoTxt'>О нас</Link></div>
-                    {user != null && <div><Link to='/Menu' className='infoTxt'>Анкеты</Link></div>}
+                    <div><Link to={user ? '/Menu' : "/Login"} className='infoTxt'>Анкеты</Link></div>
                     {user === null &&
                         <div><Link to='/Login' className='loginbtn'>Войти</Link></div>
                     }
@@ -65,7 +65,7 @@ function Header() {
             
             <Link to={'/'} onClick={close_menu} className='menu_title'>На главную</Link>
             <Link to={'/About'} onClick={close_menu} className='menu_title'>О нас</Link>
-            {user != null && <Link to={'/Menu'} onClick={close_menu} className='menu_title'>Анкеты</Link>}
+            <Link to={user ? '/Menu' : "/Login"} onClick={close_menu} className='menu_title'>Анкеты</Link>
         </div>}
         </div>
     )
