@@ -1,10 +1,11 @@
 import './About.css'
 import { strong, strong1 } from '../assets';
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 function About(){
     const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+    const [uncorrectemail, setUncorrectemail] = useState(false)
     const form = useRef(null)
     function isEmailValid(value) {
         return EMAIL_REGEXP.test(value);
@@ -36,7 +37,11 @@ function About(){
                 );
             }
         }
+        else if (!isEmailValid(email)){
+            setUncorrectemail(true)
+        }
         else{
+            setUncorrectemail(false)
             document.querySelector('.warning1').classList.remove("close")
         }
     }
@@ -54,6 +59,7 @@ function About(){
                     <input type="text" name='username' placeholder='Иванов Иван Иванович' className='name-input' />
                     <label htmlFor="name" className='labels'>Электронная почта</label>
                     <input type="email" name='usermail' placeholder='example@mail.ru' className='email-input' />
+                    {uncorrectemail && <p className='err-txt'>Некорректная электронная почта!</p>}
                     <label htmlFor="name" className='labels'>Номер телефона</label>
                     <input type="tel" name='userphone' placeholder='+79999999999' className='tel-input' />
                     <label htmlFor="name" className='labels'>Отзыв</label>

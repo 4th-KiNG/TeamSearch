@@ -16,7 +16,7 @@ function CardPage() {
     const [age, setAge] = useState()
     const [sex, setSex] = useState()
     const [sport, setSport] = useState()
-    const [link, setLink] = useState()
+    const [link, setLink] = useState("")
     const [description, setDescription] = useState()
     const [avatarURL, setAvatarURL] = useState()
     const [isLoading, setLoading] = useState(true)
@@ -87,7 +87,7 @@ function CardPage() {
                 <p className='contact-information-txt'>Вид спорта: {sport}</p>
                 <p className='contact-information-txt'>Возраст: {age}</p>
                 <p className='contact-information-txt'>Пол: {sex}</p>
-                <p className='contact-information-txt'>Ссылки на соц сети: <a href={`${link}`} style={{textDecoration: "none"}}>{link}</a></p>
+                <p className='contact-information-txt'>Ссылки на соц сети: <a href={link.slice(0,1) == "@" ? `https://t.me/${link.slice(1)}`: link} style={{textDecoration: "none"}}>{link}</a></p>
                 <p className='contact-information-txt'>Описание:</p>
                 <div className='contact-information-txt'>
                     {description != "" && <p className='desc'>{description}</p>}

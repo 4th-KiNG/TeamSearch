@@ -42,19 +42,26 @@ const MenuPage = () => {
       setcurrForms(forms.filter(form => form.sport == "Баскетбол" || form.sport == "Волейбол" || form.sport == "Мини-футбол" || form.sport == "Настольный теннис" || form.sport == "Бадминтон"))
     }, [forms])
     const [errShow, setErrShow] = useState(false)
+    const [uncorrectlink, setUncorrectlink] = useState(false)
     const Create = async (e) => {
       e.preventDefault()
       if (user) {
         const desctiption = document.getElementById("area").value
         const link = document.getElementById("link").value
         const sport = document.getElementById("sport").value
-        if (link != "" && sport != ""){
+        if (link != "" && sport != "" && desctiption != "" && (link.slice(0,1) == "@" || link.slice(0, 8) == "https://")){
           await CreateForm(desctiption, link, sport)
           Open()
           console.log(link, desctiption)
+          setUncorrectlink(false)
+          setErrShow(false)
+        }
+        else if (link.slice(0,1) != "@" && link.slice(0, 8) != "https://"){
+          setUncorrectlink(true)
         }
         else{
           setErrShow(true)
+          setUncorrectlink(false)
         }
       }
     }
@@ -188,10 +195,15 @@ const MenuPage = () => {
                     <option value="Мини-футбол">Мини-футбол</option>
                     <option value="Баскетбол">Баскетбол</option>
                     <option value="Волейбол">Волейбол</option>
+                    <option value="Настольный теннис">Настольный теннис</option>
+                    <option value="Бадминтон">Бадминтон</option>
                     <option value="Dota 2">Dota 2</option>
+                    <option value="CS:GO">CS:GO</option>
                     <option value="The Finals">The Finals</option>
+                    <option value="Rust">Rust</option>
                   </select>
                   <input className="createFormInput" id='link' type="text" placeholder='Ссылка на любую соц сеть' />
+                  {uncorrectlink && <p className='err-txt'>Некорректная ссылка!</p>}
                   <textarea className="createFormArea" name="" id="area" placeholder='Создание анкеты'></textarea>
                   <div style={{display: "flex", gap: "10px", alignItems: "center"}}>
                     <input type='submit' className="createFormBtn" value={"Создать"}/>
