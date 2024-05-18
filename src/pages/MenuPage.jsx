@@ -127,6 +127,7 @@ const MenuPage = () => {
               <p className={filter == "The Finals" ? 'filter select' : "filter"} onClick={() => Filter("The Finals")}>The Finals</p>
               <p className={filter == "Rust" ? 'filter select' : "filter"} onClick={() => Filter("Rust")}>Rust</p>
             </div>
+            <p className="filter" onClick={CleanFilters}>Отчистить фильтры</p>
           </div>
           <div className="applic">
             <div className='grey-rect'>
@@ -163,6 +164,7 @@ const MenuPage = () => {
                   <p className={filter == "Мини-Футбол" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Мини-футбол")}>Мини-Футбол</p>
                   <p className={filter == "Настольный теннис" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Настольный теннис")}>Настольный теннис</p>
                   <p className={filter == "Бадминтон" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Бадминтон")}>Бадминтон</p>
+                  
                   </>}
                   {isCyber && 
                   <>
@@ -172,6 +174,7 @@ const MenuPage = () => {
                   <p className={filter == "The Finals" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("The Finals")}>The Finals</p>
                   <p className={filter == "Rust" ? 'filter-mobile select-mobile' : "filter-mobile"} onClick={() => Filter("Rust")}>Rust</p>
                   </>}
+                  
                 </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                   <img src={cross} onClick={() => (setFiltersOpen(false), document.querySelector('body').classList.toggle('no-scroll'))} className='cross-img-filter' alt="" />

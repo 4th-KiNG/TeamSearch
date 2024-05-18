@@ -74,14 +74,17 @@ function CardPage() {
     }
     return (
         <>
+        
         <h1 className='contact-information-title' style={{backgroundColor: "white", marginBottom: "0", paddingTop: "10px", textAlign: "center"}}>Заявка участника</h1>
         <div className='CardPage'>
+            
             <div className="CardPageAvatar">
                 <div className='avatar'>
                     <img style={{width: "100%", height: "100%", borderRadius: "50%"}} src={avatarURL == "" ? avatar : avatarURL} alt="" />
                 </div>
                 <p style={{textAlign: "center"}} className='contact-information-txt'>{name}</p>
                 {email == user.email && <button className='button-lk' onClick={Delete}>Удалить анкету</button>}
+                <button className='button-lk' onClick={() => nav("/Menu")}>Назад к анкетам</button>
             </div>
             <div className='contact-information in-card'>
                 <p className='contact-information-txt'>Вид спорта: {sport}</p>
