@@ -149,7 +149,7 @@ const Login = () => {
                     <h1 className='formtxt'>Регистрация</h1>
                         <div className="input-with-ico"><img src={emailico} className='input-ico' alt="" /><input type="email" placeholder='email' value={Email} onChange={handleEmailChange} className='logininput'  /></div>
                         <div className="input-with-ico"><img src={lockico} className='input-ico' alt="" /><input type="password" placeholder='password' value={Password} onChange={handlePasswordChange} className='logininput password' /><img src={eye} onClick={ShowPassword} className='input-ico' alt="" /></div>
-                        {userNotFound && <p style={{color: "#c82f00", textAlign: "center"}}>Поля заполненны некорректно!</p>}
+                        {userNotFound && <p style={{color: "#c82f00", textAlign: "center"}}>Произошла ошибка при регистрации!</p>}
                     </div>
                     <div style={{display:"flex", flexDirection: "column", gap: "15px"}}>
                         <button className='mainbutton' onClick={() => CreateUser(Email, Password)}>Зарегестрироваться</button>

@@ -19,6 +19,7 @@ function About(){
             document.querySelector(".send-btn").classList.add("close")
             document.querySelector(".send-label").classList.remove("close")
             document.querySelector('.warning1').classList.add("close")
+            setUncorrectemail(false)
             if (form.current){
                 await emailjs.sendForm(
                     'service_lfy69vd',
