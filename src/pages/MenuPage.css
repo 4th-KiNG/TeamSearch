@@ -8,9 +8,14 @@
 .mainPage{
     position: relative;
     z-index: 0;
+    max-width: 100vw;
     display: grid;
     grid-template-columns: 370px 5fr;
-    min-height: 1000px;
+    min-height: 100vh;
+}
+
+.filter_for_mobile{
+    max-width: 100vw;
 }
 
 .filters{
@@ -347,6 +352,7 @@
     transform: translateX(28px);
 }
 .mobile-filters{
+    width: 320px;
     display: flex;
     gap: 15px;
     align-items: center;
@@ -422,6 +428,7 @@
     }
     .mainPage{
         display: block;
+        max-width: 100vw;
     }
     .create-f{
         top: 0px;
@@ -444,6 +451,7 @@
     .filter_for_mobile{
         display: flex;
         justify-content: space-between;
+        max-width: 100%;
         margin-left: 10px;
         margin-right: 10px;
     }
@@ -481,6 +489,9 @@
 }
 
 @media (max-width: 525px){
+    .mobile-filters{
+        width: 270px;
+    }
     .create-filter{
         font-size: 18px;
         width: 130px;

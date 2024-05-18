@@ -30,7 +30,7 @@
 }
 
 .container_for_mobile{
-    max-width: 840px;
+    max-width: 100vw;
     display: none;
     align-items: center;
     width: 100%;

@@ -111,6 +111,8 @@ const MenuPage = () => {
     }
     document.querySelector("body").classList.remove("no-scroll")
     return (
+
+      
       <div>
         <div className="mainPage">
           <div className="filters">
