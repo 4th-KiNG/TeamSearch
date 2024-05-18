@@ -6,14 +6,14 @@
 - [x] Генерация идеи проекта
 - [x] Создание макета в Figma
 - [x] Написание Fronted
-- [ ] Написание Backend
-- [ ] Совмещение Front + Back
+- [x] Создание БД
+- [x] Подключение БД к проекту 
 - [ ] Итоговое представление проекта
 # Стек технологий
-React, Node.js, CSS, MySQL
+React, CSS, Firebase
 
-# Работа сайта
-Во избежание некорректной работы фильтров на странице сайта должен быть отключён автоперевод 
-
+# Навигация по сайту
+При входе на сайт вас встречает домашнаяя страница с карточками, на которых подробно расписаны цели и преимущества нашего сервиса
+![](https://github.com/4th-KiNG/TeamSearch/blob/master/src/assets/readme/Home.gif)
 # Дизайн Figma
 https://www.figma.com/file/8EuyGfSJeu3lmER23CPo0k/Design?type=design&mode=design&t=LX5zRSH45DxIuqnb-1
